@@ -1,0 +1,46 @@
+body {
+    padding-top: 54px;
+  }
+
+  @media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+  } 
+
+  .carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .carouselcolor{
+    background: gray;
+  }
+
+  .carousel img {
+    widows: 10% ; 
+    height:100%
+    }
+
+  .portfolio-item {
+    margin-bottom: 30px;
+  }
+  
+  .inputdate{
+    margin-bottom: 20px;
+  }
+
+  .main{
+    margin-bottom: 50px
+  }
+
+  .icon{
+    font-size: 18px
+  }
+  .iconfooter{
+    font-size: 30px
+  }
