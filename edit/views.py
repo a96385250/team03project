@@ -20,3 +20,19 @@ def supdate(request):
  
 def sdelete(request):
     return render(request,'search/delete.html',locals())
+
+# ========================================================================
+
+def aien0313crte(request):
+    return render(request,'aien0313/create.html')
+
+def aien0313red(request):
+    return render(request,'aien0313/read.html',locals())
+
+def aien0313upd(request):
+    
+    return render(request,'aien0313/update.html',locals())
+
+def aien0313del(request):
+    return render(request,'aien0313/delete.html',locals())
+ 
