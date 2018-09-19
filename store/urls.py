@@ -5,11 +5,10 @@ app_name = "store"
 
 urlpatterns = [
     #http://localhost:8000/member
-    path('',views.index,name="index"),
-
+    
+    path('',views.store,name="store"),
+    path('index/',views.index,name="index"),
     path('create/',views.create,name="create"),
-
     path('delete/<int:productid>',views.delete,name="delete"),
-
     path('update/<int:productid>', views.update, name="update"),
 ]

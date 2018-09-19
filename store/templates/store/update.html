@@ -1,4 +1,5 @@
-{% block content %}
+{% extends "app.html" %}
+{% block appcode %}
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div>
@@ -38,7 +39,7 @@
   </div>
   <div>
     <div>
-      <button type="submit"><i class="fab fa-angellist"></i> 新增</button>
+      <button type="submit">更新</button>
     </div>
   </div>
 </form>

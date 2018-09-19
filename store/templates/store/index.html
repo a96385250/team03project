@@ -1,4 +1,5 @@
-{% block content %}
+{% extends "app.html" %}
+{% block appcode %}
     <table>
         <thead>
             <tr>
@@ -26,4 +27,5 @@
             </tr>
         </tbody>
     </table>
+<a href="{% url "store:create" %}" style = "font-size:32px">商品新增</a>
 {% endblock%}
