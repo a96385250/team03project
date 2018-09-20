@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'home',
     'edit',
     'store',
-    'search'
+    'search',
+    'player'
 ]
 
 MIDDLEWARE = [
