@@ -1,0 +1,43 @@
+{% extends "app.html" %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block appcode %}
+<table class="table">
+    <thead>
+        <th>球員名字</th>
+        <th>打擊率</th>
+        <th>安打數</th>
+        <th>全壘打</th>
+        <th>防禦率</th>
+        <th>勝投</th>
+        <th>救援成功</th>
+        <th>打點</th>
+        <th>盜壘成功</th>
+        <th>奪三振</th>
+        <th>編輯</th>
+    </thead>
+    <tbody>
+        {% for playerlist in players %}
+        <tr>
+            <td>{{playerlist.playername}}</td>
+            <td>{{playerlist.avg}}</td>
+            <td>{{playerlist.h}}</td>
+            <td>{{playerlist.hr}}</td>
+            <td>{{playerlist.era}}</td>
+            <td>{{playerlist.w}}</td>
+            <td>{{playerlist.sv}}</td>
+            <td>{{playerlist.rbi}}</td>
+            <td>{{playerlist.sb}}</td>
+            <td>{{playerlist.so}}</td>
+            <td>
+                <a href="{% url 'admin:aien0313upd' playerlist.playerid %}"><i class="fas fa-edit"></i></a>
+                <a href="{% url 'admin:aien0313del' playerlist.playerid %}"><i class="far fa-trash-alt"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+{% block script %}
+{% endblock %}
