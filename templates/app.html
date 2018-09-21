@@ -22,11 +22,9 @@
     {% include 'Navbr.html'%}
     {% block edit %}
     {% endblock %}
-    <div class="container">
-        <!--  There start html code -->
-        {% block appcode %}
-        {% endblock %}
-    </div> 
+    {% block appcode %}
+    <!--  There start html code -->
+    {% endblock %} 
     
     <!-- Footer -->
     {% include 'footer.html'%}
