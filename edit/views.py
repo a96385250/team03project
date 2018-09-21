@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from search.models  import Articles, Teams
-from player.models import Players,Teams
+from player.models import Players,Teams as tem
+from store.models import Productcat,Products,Teams
 from django.http import HttpResponse
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
-
 
 
 
@@ -76,7 +76,7 @@ def aien0313crte(request):
         sb = request.POST["sb"]
         so = request.POST["so"]
 
-        Players.objects.create(teamid=Teams.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so)
+        Players.objects.create(teamid=tem.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so)
         return redirect('../playerlist/')
 
 
@@ -87,7 +87,7 @@ def aien0313upd(request,id):
     if request.method =="POST":
         playerupdate = Players.objects.get(playerid=id)
         print(request.POST["teamid"])
-        teamsid=Teams.objects.get(teamname=request.POST["teamid"])
+        teamsid=tem.objects.get(teamname=request.POST["teamid"])
         team = teamsid.teamid
         print(team)
         playername = request.POST["playername"]
