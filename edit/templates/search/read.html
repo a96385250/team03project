@@ -1,0 +1,40 @@
+{% extends "edit.html" %}
+{% load static %}
+{% block appcode %}
+<h1>Data List</h1>
+<table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Date</th>
+                <th>Team</th>
+                <th>Article type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles%}
+            <tr>
+                <td contenteditable="true" id="atitle{{article.articleid}}">{{ article.title }}</td>
+                <td contenteditable="true" id="aurl{{article.articleid}}">{{ article.url }}</td>
+                <td contenteditable="true" id="adate{{article.articleid}}">{{ article.date }}</td>
+                <td contenteditable="true" id="ateam{{article.articleid}}">
+                    <select id="select1" name="team" class="form-control" value="{{article.teamid.teamname}}">
+                        {% for team in teams %} 
+                            <option  {% if team.teamid == article.teamid.teamid %} selected {% endif %}>{{team.teamname}}</option> 
+                        {% endfor  %} 
+                    </select>
+                </td>
+                <td contenteditable="true" id="atype{{article.articleid}}">{{ article.articletype }}</td>
+                <td>
+                    <a href="{% url 'admin:sdelete' article.articleid %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'admin:supdate' article.articleid %}" name="upload{{article.articleid}}" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+                </td>            
+            </tr>
+            {% endfor %}
+        </tbody>
+     </table>
+{% endblock%}
+{% block script %}
+<script type="text/javascript" src="{% static 'js/table.js'%}"></script>
+{% endblock %}
