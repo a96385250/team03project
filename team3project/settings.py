@@ -25,7 +25,7 @@ SECRET_KEY = '!lhsw)9vkp&pv6udu7!82ui)nt$g1kw7^z^o-a7&b)g=_lj503'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'edit',
     'store',
     'search',
-    'player'
+    'player',
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
@@ -132,5 +133,6 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR,'static')
 # ]
 STATIC_ROOT =os.path.join(BASE_DIR,'static')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
