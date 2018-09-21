@@ -127,7 +127,6 @@ def aien0313del(request,id):
     playerdelete.delete()
     return redirect('../playerlist/')
 
-# store
 
 def index(request):  
     title = "管理商品"
