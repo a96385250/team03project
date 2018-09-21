@@ -2,12 +2,10 @@ from django.shortcuts import render,redirect
 from search.models  import Articles, Teams
 from player.models import Players,Teams
 from django.http import HttpResponse
-<<<<<<< HEAD
-=======
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
->>>>>>> 49f097c42dc71ecd96349720d837b7878bcb3507
+
 
 
 
