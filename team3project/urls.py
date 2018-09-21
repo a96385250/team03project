@@ -23,5 +23,6 @@ urlpatterns = [
     path('',include('home.urls')),
     path('edit/',include('edit.urls')),
     path('store/',include('store.urls')),
-    path('search/',include('search.urls'))
+    path('search/',include('search.urls')),
+    path('player/',include('player.urls')),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

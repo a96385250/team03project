@@ -56,11 +56,15 @@
                 <a class="dropdown-item" href="{% url 'admin:sread' %}">Read</a>
             </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aien0313Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-fw fa-folder"></i>
+              <span>aien0313</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="aien0313Dropdown">
+              <h6 class="dropdown-header">Controls</h6>
+              <a class="dropdown-item" href="{% url 'admin:playerlist'%}">player</a>
+          </div>
         <li class="nav-item">
           <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
@@ -70,6 +74,7 @@
       <div id="content-wrapper">
         <div class="container-fluid">
           <!--  There start html code -->
+        {% load static %}
         {% block appcode %}
         {% endblock %}
         </div>
