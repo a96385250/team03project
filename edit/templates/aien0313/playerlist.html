@@ -3,34 +3,34 @@
 {% block css %}
 {% endblock %}
 {% block appcode %}
-<table class="table">
+<table class="table table-editable">
     <thead>
-        <th>球員名字</th>
-        <th>打擊率</th>
-        <th>安打數</th>
-        <th>全壘打</th>
-        <th>防禦率</th>
-        <th>勝投</th>
-        <th>救援成功</th>
-        <th>打點</th>
-        <th>盜壘成功</th>
-        <th>奪三振</th>
-        <th>編輯</th>
+        <th class="text-center">球員名字</th>
+        <th class="text-center">打擊率</th>
+        <th class="text-center">安打數</th>
+        <th class="text-center">全壘打</th>
+        <th class="text-center">防禦率</th>
+        <th class="text-center">勝投</th>
+        <th class="text-center">救援成功</th>
+        <th class="text-center">打點</th>
+        <th class="text-center">盜壘成功</th>
+        <th class="text-center">奪三振</th>
+        <th class="text-center">編輯</th>
     </thead>
     <tbody>
         {% for playerlist in players %}
         <tr>
-            <td>{{playerlist.playername}}</td>
-            <td>{{playerlist.avg}}</td>
-            <td>{{playerlist.h}}</td>
-            <td>{{playerlist.hr}}</td>
-            <td>{{playerlist.era}}</td>
-            <td>{{playerlist.w}}</td>
-            <td>{{playerlist.sv}}</td>
-            <td>{{playerlist.rbi}}</td>
-            <td>{{playerlist.sb}}</td>
-            <td>{{playerlist.so}}</td>
-            <td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.playername}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.avg}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.h}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.hr}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.era}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.w}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.sv}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.rbi}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.sb}}</td>
+            <td class="pt-3-half text-center" contenteditable="true">{{playerlist.so}}</td>
+            <td class="text-center">
                 <a href="{% url 'admin:aien0313upd' playerlist.playerid %}"><i class="fas fa-edit"></i></a>
                 <a href="{% url 'admin:aien0313del' playerlist.playerid %}"><i class="far fa-trash-alt"></i></a>
             </td>
