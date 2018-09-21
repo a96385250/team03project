@@ -10,6 +10,7 @@ from django.utils.encoding import smart_str
 def store(request):  
     title = "商城"
     #呼叫方法
+    teams = Teams.objects.all()
     products = Products.objects.all()
     productcat = Productcat.objects.all()
     return render(request,'store/store.html',locals())
