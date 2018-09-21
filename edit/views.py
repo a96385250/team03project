@@ -24,8 +24,7 @@ def screate(request):
 
 def sread(request):
     articles = Articles.objects.all()
-    for article in articles:
-        print(article.title)
+    teams = Teams.objects.all()
 
     return render(request,'search/read.html',locals())
 
@@ -38,8 +37,9 @@ def supdate(request, articleid):
         ateam=team.teamid
         atype = request.POST["articletype"]
 
-        Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
-        return redirect("/edit/sread/")
+        # Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
+        # return redirect("/edit/sread/")
+        
 
     article = Articles.objects.get(articleid=articleid)
     teams = Teams.objects.all()
@@ -48,7 +48,7 @@ def supdate(request, articleid):
     for team in teams:
         print(team.teamid)
     return render(request,'search/update.html',locals())
- 
+    
 def sdelete(request, articleid):
     article = Articles.objects.get(articleid=articleid)
     article.delete()
