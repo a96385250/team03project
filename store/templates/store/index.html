@@ -3,28 +3,24 @@
     <table>
         <thead>
             <tr>
-                <th>商品分類</th>
-                <th>商品名稱</th>
-                <th>商品價格</th>
-                <th>商品描述</th>
-                <th>商品圖片</th>
-                <th>編輯</th>
+                <th style="border:2px solid black">名稱</th>
+                <th style="border:2px solid black">價格</th>
+                <th style="border:2px solid black">描述</th>
+                <th style="border:2px solid black">圖片</th>
+                <th style="border:2px solid black">編輯</th>
             </tr>
         </thead>
         <tbody>
+            {% for products in products %}
             <tr>
-                {% for category in categorys %}
-                <td>{{category.categoryname}}</td>
-                {% endfor %}
-                {% for product in products %}
-                <td>{{product.modelname}}</td>
-                <td>{{product.unitcost}}</td>
-                <td>{{product.description}}</td>
-                <td><img src="/media/{{product.productimage}}" width = "100" /></td>
-                <td><a href="{% url "store:update" product.productid %}">更新</a></td>
-                <td><a href="{% url "store:delete" product.productid %}">刪除</a></td>
-                {% endfor %}
+                <td style="border:2px solid black">{{products.productname}}</td>
+                <td style="border:2px solid black">{{products.price}}</td>
+                <td style="border:2px solid black">{{products.productdesc}}</td>
+                <td style="border:2px solid black"><img src="/media/{{products.image}}" width = "100" /></td>
+                <td style="border:2px solid black"><a href="{% url "store:update" products.productid %}">更新</a></td>
+                <td style="border:2px solid black"><a href="{% url "store:delete" products.productid %}">刪除</a></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 <a href="{% url "store:create" %}" style = "font-size:32px">商品新增</a>

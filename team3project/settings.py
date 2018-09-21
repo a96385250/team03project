@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'edit',
     'store',
     'search',
-    'player'
+    'player',
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
