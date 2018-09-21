@@ -5,9 +5,9 @@
 <div>
   <label for="select2" >隊伍</label>
   <div>
-    <select id="select2" name="teamid" class="form-control" value="{{teams.teamname}}">
+    <select id="select2" name="teamid" class="form-control">
       {% for teams in teams %} 
-      <option value="{{teams.teamid}}">{{teams.teamname}}</option>                       
+      <option  {% if teams.teamid == products.teamid.teamid %} selected {% endif %}>{{teams.teamname}}</option>                       
       {% endfor  %} 
     </select>
   </div>
@@ -17,7 +17,7 @@
   <div>
     <select id="select1" name="categoryid" class="form-control" value="{{productcat.categoryname}}">
       {% for productcat in productcat %} 
-      <option value="{{productcat.categoryid}}">{{productcat.categoryname}}</option>                       
+      <option {% if productcat.categoryid == products.categoryid.categoryid %} selected {% endif %}>{{productcat.categoryname}}</option>                       
       {% endfor  %} 
     </select>
   </div>
@@ -37,7 +37,7 @@
   <div>
     <label for="inputDescription">描述</label>
     <div>
-        <textarea cols=40 rows=6 id="inputDescription" value="{{products.productdesc}}" name="productdesc"></textarea> 
+        <textarea cols=40 rows=6 id="inputDescription" name="productdesc">{{products.productdesc}}</textarea> 
     </div>
   </div>
     <div>

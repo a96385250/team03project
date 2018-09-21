@@ -161,11 +161,13 @@ def delete(request, productid):
 def update(request, productid):
     title = "商品更新"
     if request.method == "POST" and request.FILES["image"]:
-        categoryid = request.POST["categoryid"]
         productname = request.POST["productname"]
         price = request.POST["price"]
         productdesc = request.POST["productdesc"]
-        teamid = request.POST["teamid"]
+        team = Teams.objects.get(teamname=request.POST["teamid"])
+        teamid = team.teamid
+        category = Productcat.objects.get(categoryname=request.POST["categoryid"])
+        categoryid = category.categoryid
         
         myFile = request.FILES["image"]
         fs = FileSystemStorage()
