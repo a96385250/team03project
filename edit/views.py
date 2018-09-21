@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
-=======
 from django.shortcuts import render,redirect
->>>>>>> 1f8caf371cc0cab436a19ac6555c33f9bf75a1af
 from search.models  import Articles, Teams
 from player.models import Players,Teams
 from django.http import HttpResponse
@@ -57,7 +53,7 @@ def sdelete(request, articleid):
     article = Articles.objects.get(articleid=articleid)
     article.delete()
     return redirect('/edit/sread/')
-# ========================================================================
+
 def playerlist(request):
     players = Players.objects.all()
     return render(request,'aien0313/playerlist.html',locals())
