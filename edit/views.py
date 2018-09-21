@@ -71,7 +71,7 @@ def aien0313crte(request):
         rbi = request.POST["rbi"]
         sb = request.POST["sb"]
         so = request.POST["so"]
-        
+
         Players.objects.create(teamid=Teams.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so)
         return redirect('../playerlist/')
 
@@ -79,12 +79,13 @@ def aien0313crte(request):
     teams = Teams.objects.all()
     return render(request,'aien0313/create.html',locals())
 
-def aien0313red(request):
-    return render(request,'aien0313/read.html',locals())
-
 def aien0313upd(request,id):
     if request.method =="POST":
         playerupdate = Players.objects.get(playerid=id)
+        print(request.POST["teamid"])
+        teamsid=Teams.objects.get(teamname=request.POST["teamid"])
+        team = teamsid.teamid
+        print(team)
         playername = request.POST["playername"]
         avg = request.POST["avg"]
         h = request.POST["h"]
@@ -97,6 +98,7 @@ def aien0313upd(request,id):
         so = request.POST["so"]
 
         playerupdate.playername=playername
+        playerupdate.teamid=teamsid
         playerupdate.avg=avg
         playerupdate.h=h
         playerupdate.hr=hr

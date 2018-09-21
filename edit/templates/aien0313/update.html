@@ -7,13 +7,9 @@
     {% csrf_token %}
     <div class="form-group">
         <label for="exampleInputselect">球隊</label>
-        <select id="exampleInputselect" name="teamid" class="form-control" disabled="disabled">
+        <select id="exampleInputselect" name="teamid" class="form-control">
             {% for teamlist in teams %}
-            {% if teamlist.teamid == playerupdate.teamid.teamid %}
-            <option value="{{teamlist.teamid}}" selected>{{teamlist.teamname}}</option>
-            {% else %}
-            <option value="{{teamlist.teamid}}">{{teamlist.teamname}}</option>
-            {% endif %}
+            <option {% if teamlist.teamid == playerupdate.teamid.teamid %} selected {% endif %}>{{teamlist.teamname}}</option>
             {% endfor %}
         </select>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>

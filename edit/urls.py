@@ -12,7 +12,6 @@ urlpatterns = [
     path('sdelete/',views.sdelete,name='sdelete'),
     path('playerlist/',views.playerlist,name='playerlist'),
     path('aien0313crte/',views.aien0313crte,name='aien0313crte'),
-    path('aien0313red/',views.aien0313red,name='aien0313red'),
     path('aien0313upd/<int:id>',views.aien0313upd,name='aien0313upd'),
     path('aien0313del/<int:id>',views.aien0313del,name='aien0313del'),
 
