@@ -126,9 +126,7 @@ def aien0313del(request,id):
     playerdelete = Players.objects.get(playerid=id)
     playerdelete.delete()
     return redirect('../playerlist/')
-<<<<<<< HEAD
- 
-=======
+
 # store
 
 def index(request):  
@@ -190,4 +188,4 @@ def testencoding(request):
     response = HttpResponse("<h2>encoding test</h2>")
     response.set_cookie("u2",u2)
     return response
->>>>>>> 49f097c42dc71ecd96349720d837b7878bcb3507
+
