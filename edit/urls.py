@@ -14,5 +14,9 @@ urlpatterns = [
     path('aien0313crte/',views.aien0313crte,name='aien0313crte'),
     path('aien0313upd/<int:id>',views.aien0313upd,name='aien0313upd'),
     path('aien0313del/<int:id>',views.aien0313del,name='aien0313del'),
+    path('index/',views.index,name="index"),
+    path('create/',views.create,name="create"),
+    path('delete/<int:productid>',views.delete,name="delete"),
+    path('update/<int:productid>',views.update,name="update"),
 
 ]

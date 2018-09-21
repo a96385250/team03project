@@ -1,4 +1,4 @@
-{% extends "app.html" %}
+{% extends "edit.html" %}
 {% block appcode %}
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
@@ -41,36 +41,12 @@
     </div>
   </div>
   <div>
-    <label for="inputFile">圖片</label>
-    <div>
-      <input type="file" id="inputFile" name="image">
-    </div>
+    <input type="file" id="inputFile" name="image">
   </div>
   <div>
     <div>
-      <button type="submit" id="buttonupdate">新增</button>
+      <button type="submit">新增</button>
     </div>
   </div>
 </form>
-{% endblock %}
-
-{% block script %}
-<script>
-$(document).ready(function(){
-    $('#buttonupdate').one('click',function(){
-      datas = {
-      "productname":"$('#inputName').val()",
-      "productdesc":"$('#inputDescription').val()",
-      "price":"$('#inputUnitcost').val()",
-      "image":"$('#inputFile').val()"
-      };
-      })
-      // 修改資料
-      $.ajax({
-          'url':'/store/update/'+productid+'/',
-          'type':'PUT',
-          'data':datas
-      })
-    })
-</script>
 {% endblock %}
