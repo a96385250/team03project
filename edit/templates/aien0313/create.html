@@ -1,0 +1,68 @@
+{% extends "app.html" %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block appcode %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleInputselect">球隊</label>
+        <select id="exampleInputselect" name="teamid" class="form-control" >
+            {% for teamlist in teams %}
+            <option value="{{teamlist.teamid}}">{{teamlist.teamname}}</option>
+            {% endfor %}
+        </select>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputplayername">球員</label>
+        <input type="text" class="form-control" id="exampleInputplayername" aria-describedby="emailHelp" name="playername" placeholder="球員">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputavg">打擊率</label>
+        <input type="text" class="form-control" id="exampleInputavg" aria-describedby="emailHelp" name="avg" placeholder="打擊率">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputh">安打</label>
+        <input type="text" class="form-control" id="exampleInputh" aria-describedby="emailHelp" name="h" placeholder="安打">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputhr">全壘打</label>
+        <input type="text" class="form-control" id="exampleInputhr" name="hr" placeholder="全壘打">
+      </div>
+      <div class="form-group">
+            <label for="exampleInputera">防禦率</label>
+            <input type="text" class="form-control" id="exampleInputera" name="era" placeholder="防禦率">
+      </div>
+      <div class="form-group">
+            <label for="exampleInputw">勝投</label>
+            <input type="text" class="form-control" id="exampleInputw" name="w" placeholder="勝投">
+      </div>
+      <div class="form-group">
+            <label for="exampleInpusv">救援點</label>
+            <input type="text" class="form-control" id="exampleInputsv" name="sv" placeholder="救援點">
+      </div>
+      <div class="form-group">
+            <label for="exampleInputrbi">打點</label>
+            <input type="text" class="form-control" id="exampleInputrbi" name="rbi" placeholder="打點">
+      </div>
+      <div class="form-group">
+            <label for="exampleInputsb">盜壘成功</label>
+            <input type="text" class="form-control" id="exampleInputsb" name="sb" placeholder="盜壘成功">
+      </div>
+      <div class="form-group">
+            <label for="exampleInputso">奪三振</label>
+            <input type="text" class="form-control" id="exampleInputso" name="so" placeholder="奪三振">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
+{% block script %}
+{% endblock %}

@@ -37,15 +37,15 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-				<h5  >Arreglando Tu Cocina.</h5>
-					<form class="" method="post" action="#">
-						
+				<h5></h5>
+					<form class="" method="post" >
+						{% csrf_token %}
 						<div class="form-group">
 							<!--<label for="name" class="cols-sm-2 control-label">Nombre</label>-->
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Escribe tu Nombre"/>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="支持的隊伍">
 								</div>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Escribe tu Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="信箱"/>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Escribe tu Usuario"/>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="名子"/>
 								</div>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Escribe tu contraseña"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="密碼"/>
 								</div>
 							</div>
 						</div>
@@ -85,7 +85,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirma tu contraseña"/>
+									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="確認密碼"/>
 								</div>
 							</div>
 						</div>
@@ -94,7 +94,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></span>
-									<input type="date" class="form-control" name="BornDate" id="BornDate"  placeholder="Introduce tu Fecha de Nacimiento"/>
+									<input type="date" class="form-control" name="teamid" id="BornDate"  placeholder="Introduce tu Fecha de Nacimiento"/>
 								</div>
 							</div>
 								</div>
@@ -103,14 +103,14 @@
 								<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-venus fa-lg" aria-hidden="true"></i></span>
-									<input type="list" class="form-control" name="sex" id="sex"  placeholder="Selecciona el Genero"/>
+									<input type="list" class="form-control" name="sex" id="sex"  placeholder="性別"/>
 								</div>
 							</div>
 						</div>
 
 
 						<div class="form-group ">
-							<a href="http://deepak646.blogspot.in" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrate</a>
+							<button type="submit" class="btn btn-primary btn-lg btn-block login-button" >註冊</button>
 						</div>
 						
 					</form>

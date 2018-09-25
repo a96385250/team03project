@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!lhsw)9vkp&pv6udu7!82ui)nt$g1kw7^z^o-a7&b)g=_lj503'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     "signin",
+    'edit',
+    'store',
+    'search',
+    'player'
+
 ]
 
 MIDDLEWARE = [
@@ -80,7 +84,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'team3db',
+        'NAME':'yamidb',
         'USER':'root',
         'PASSWORD':'root',
         'HOST':'localhost'
@@ -128,3 +132,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'static')
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>work</title>
+    
+        {% load static %}
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        {% block css %}
+        {% endblock %}
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'styles/css/sb-admin.min.css'%}">
+        <link rel="stylesheet" href="{% static 'styles/css/main.css'%}">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'Navbr.html'%}
+    <div id="wrapper">
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Pages</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">Login Screens:</h6>
+            <a class="dropdown-item" href="login.html">Login</a>
+            <a class="dropdown-item" href="register.html">Register</a>
+            <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Other Pages:</h6>
+            <a class="dropdown-item" href="404.html">404 Page</a>
+            <a class="dropdown-item" href="blank.html">Blank Page</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Search Controls</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="searchDropdown">
+                <h6 class="dropdown-header">Controls</h6>
+                <a class="dropdown-item" href="{% url 'admin:screate' %}">Create</a>
+                <a class="dropdown-item" href="{% url 'admin:sread' %}">Read</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aien0313Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-fw fa-folder"></i>
+              <span>aien0313</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="aien0313Dropdown">
+              <h6 class="dropdown-header">Controls</h6>
+              <a class="dropdown-item" href="{% url 'admin:playerlist'%}">player</a>
+          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span></a>
+        </li>
+      </ul>
+      <div id="content-wrapper">
+        <div class="container-fluid">
+          <!--  There start html code -->
+        {% load static %}
+        {% block appcode %}
+        {% endblock %}
+        </div>
+      </div> 
+    </div>
+    <!-- Footer -->
+    {% include 'footer.html'%}
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- script -->
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
