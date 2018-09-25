@@ -4,5 +4,5 @@ from django.shortcuts import render
 def check(request):
     return render(request,'home/check.html')
 
-def maincheck(request):
-    return render(request,'main.html')
+def home(request):
+    return render(request,'home/home.html')

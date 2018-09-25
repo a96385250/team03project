@@ -1,0 +1,52 @@
+{% extends "edit.html" %}
+{% block appcode %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div>
+  <label for="select2" >隊伍</label>
+  <div>
+    <select id="select2" name="teamid" class="form-control">
+      {% for teams in teams %} 
+      <option value="{{teams.teamid}}">{{teams.teamname}}</option>                       
+      {% endfor  %} 
+    </select>
+  </div>
+</div>
+<div>
+  <label for="select1" >分類</label>
+  <div>
+    <select id="select1" name="categoryid" class="form-control">
+      {% for productcat in productcat %} 
+      <option value="{{productcat.categoryid}}">{{productcat.categoryname}}</option>                       
+      {% endfor  %} 
+    </select>
+  </div>
+</div>
+<div>
+  <label for="inputName">名稱</label>
+    <div>
+      <input type="text" id="inputName" placeholder="Name" name="productname">
+    </div>
+  </div>
+  <div >
+    <label for="inputUnitcost" >價格</label>
+    <div>
+      <input type="text" id="inputUnitcost" placeholder="Price" name="price">
+    </div>
+  </div>
+  <div>
+    <label for="inputDescription">描述</label>
+    <div>
+        <textarea cols=40 rows=6 id="inputDescription" placeholder="Description" name="productdesc"></textarea> 
+    </div>
+  </div>
+  <div>
+    <input type="file" id="inputFile" name="image">
+  </div>
+  <div>
+    <div>
+      <button type="submit">新增</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
