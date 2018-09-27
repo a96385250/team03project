@@ -13,7 +13,4 @@ def registered(request):
         membername = request.POST["membername"]
         Members.objects.create(teamid=Teams.objects.get(teamid=teamid),email=email,password=password,newsletter=newsletter,phoneno=phoneno,username=username,membername=membername)
         return redirect("/")
-
-
-
     return render(request,'registered.html',locals())
