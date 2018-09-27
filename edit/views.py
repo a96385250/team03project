@@ -44,10 +44,7 @@ def supdate(request):
 
         Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
         return redirect("/edit/sread/")
-<<<<<<< HEAD
         
-=======
->>>>>>> 354d3bae01f9d2fed9aaa8a00954966d96387df7
 
     # article = Articles.objects.get(articleid=articleid)
     # teams = Teams.objects.all()
