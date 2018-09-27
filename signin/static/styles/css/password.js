@@ -1,15 +1,10 @@
-/**
- * jquery.pwstrength http://matoilic.github.com/jquery.pwstrength
- *
- * @version v0.1.1
- * @author Mato Ilic <info@matoilic.ch>
- * @copyright 2013 Mato Ilic
- *
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- */
-;(function($) {
+<script type="text/javascript">
+    $(function () {
+        //啟用密碼強度指示器，並變更說明文字
+        $("input[name='password']").pwstrength({ texts: ['非常弱', '弱', '中等', '強', '非常強'] });
+
+    });
+    (function($) {
     $.pwstrength = function(password) {
         var score = 0, length = password.length, upperCase, lowerCase, digits, nonAlpha;
         //字串長度分數 
@@ -77,3 +72,4 @@
         return this.keyup(options, updateIndicator);
     };
 })(jQuery);
+</script>
