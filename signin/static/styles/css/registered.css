@@ -5,117 +5,136 @@
 /*
  * General styles
  */
-#playground-container {
-    height: 500px;
-    overflow: hidden !important;
-    -webkit-overflow-scrolling: touch;
-}
-body, html{
-     height: 100%;
- 	background-repeat: no-repeat;
- 	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
- 	font-family: 'Oxygen', sans-serif;
-	    background-size: cover;
+
+ body, html{
+    height: 100%;
+    background-repeat: no-repeat;
+    background-color: #d3d3d3;
+    font-family: 'Oxygen', sans-serif;
 }
 
 .main{
- 	margin:50px 15px;
+    margin-top: 70px;
 }
 
 h1.title { 
-	font-size: 50px;
-	font-family: 'Passion One', cursive; 
-	font-weight: 400; 
+   font-size: 50px;
+   font-family: 'Passion One', cursive; 
+   font-weight: 400; 
 }
 
 hr{
-	width: 10%;
-	color: #fff;
+   width: 10%;
+   color: #fff;
 }
 
 .form-group{
-	margin-bottom: 15px;
+   margin-bottom: 15px;
 }
 
 label{
-	margin-bottom: 15px;
+   margin-bottom: 15px;
 }
 
 input,
 input::-webkit-input-placeholder {
-    font-size: 11px;
-    padding-top: 3px;
+   font-size: 11px;
+   padding-top: 3px;
 }
 
 .main-login{
- 	background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+   /* shadows and rounded borders */
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+   border-radius: 2px;
+   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 
 }
-.form-control {
-    height: auto!important;
-padding: 8px 12px !important;
-}
-.input-group {
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
-}
-#button {
-    border: 1px solid #ccc;
-    margin-top: 28px;
-    padding: 6px 12px;
-    color: #666;
-    text-shadow: 0 1px #fff;
-    cursor: pointer;
-    -moz-border-radius: 3px 3px;
-    -webkit-border-radius: 3px 3px;
-    border-radius: 3px 3px;
-    -moz-box-shadow: 0 1px #fff inset, 0 1px #ddd;
-    -webkit-box-shadow: 0 1px #fff inset, 0 1px #ddd;
-    box-shadow: 0 1px #fff inset, 0 1px #ddd;
-    background: #f5f5f5;
-    background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
-    background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-    background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-    background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-    background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
-}
+
 .main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 400px;
-    padding: 10px 40px;
-	background:#64d660;
-	    color: #FFF;
-    text-shadow: none;
-	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
--moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 330px;
+   padding: 40px 40px;
 
-}
-span.input-group-addon i {
-    color: #009edf;
-    font-size: 17px;
 }
 
 .login-button{
-	margin-top: 5px;
+   margin-top: 5px;
 }
 
 .login-register{
-	font-size: 11px;
-	text-align: center;
+   font-size: 11px;
+   text-align: center;
 }
-.center{
-    margin: 0px auto;
-    padding-left: 1000px;
+
+/* ------------------------------------ */
+
+ 
+#pwindicator { 
+    margin-top: 4px;
+    /*width: 150px;*/  /*官網有這個，但好像有加沒加都沒差，所以拿掉*/
 }
+
+/*官方只有寫 .bar，為了避免和自己Web專案有衝突，Selector改寫如下*/
+#pwindicator > .bar {
+    margin-bottom: 2px; /*這官網沒有，視自己專案需求要不要加。沒加的話，可能bar條和文字會上下黏一塊*/
+    height: 2px;
+}
+
+#pwindicator > .label {
+  /*顯示弱、中、強的文字大小，此Selector官方沒有，自己加的*/
+  font-size: 12px;
+}
+
+
+/*以下顏色自行配*/
+/*非常弱*/
+.pw-very-weak .bar {
+    background: #d00;
+    width: 30px;
+}
+
+.pw-very-weak .label {
+    color: #d00;
+}
+
+.pw-weak .bar {
+    background: #d00;
+    width: 60px;
+}
+
+.pw-weak .label {
+    color: #d00;
+}
+
+.pw-mediocre .bar {
+    background: #f3f01a;
+    width: 90px;
+}
+
+.pw-mediocre .label {
+    color: #f3f01a;
+}
+
+.pw-strong .bar {
+    background: #f3b31a;
+    width: 120px;
+}
+
+.pw-strong .label {
+    color: #f3b31a;
+}
+
+.pw-very-strong .bar {
+    background: #0d0;
+    width: 150px;
+}
+
+.pw-very-strong .label {
+    color: #0d0;
+}
+/*End密碼強度指示*/
