@@ -32,7 +32,7 @@ def sread(request):
 
     return render(request,'search/read.html',locals())
 
-def supdate(request, articleid):
+def supdate(request):
     if request.method == "POST":
         atitle = request.POST["title"]
         aurl = request.POST["url"]
@@ -41,16 +41,13 @@ def supdate(request, articleid):
         ateam=team.teamid
         atype = request.POST["articletype"]
 
-        # Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
-        # return redirect("/edit/sread/")
+        Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
+        return redirect("/edit/sread/")
         
 
-    article = Articles.objects.get(articleid=articleid)
-    teams = Teams.objects.all()
+    # article = Articles.objects.get(articleid=articleid)
+    # teams = Teams.objects.all()
 
-    print(article.teamid.teamid)
-    for team in teams:
-        print(team.teamid)
     return render(request,'search/update.html',locals())
     
 def sdelete(request, articleid):
