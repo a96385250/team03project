@@ -1,0 +1,27 @@
+
+.container-login
+{
+    margin-top: 35%;
+}
+
+#panel-login{
+    background-color: #222;
+    border: black;
+}
+
+#logo {
+    font-size: 36px;
+    font-family:coolvetica;
+    color: white;
+    width: 115px;
+
+}
+
+#title-login
+{
+    color: white;
+}
+
+#nav{
+    background-color: #222;
+}

@@ -1,0 +1,155 @@
+{% include 'Navbr.html'%}
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'styles/css/main.css'%}">
+<link rel="stylesheet" href="{% static 'styles/css/signin.css'%}">
+<link rel="stylesheet" href="{% static 'styles/css/email.js'%}">
+<link rel="stylesheet" href="{% static 'styles/css/password.js'%}">
+
+    <!-- Navigation -->
+
+<!-- ------------------------------------------------------------------ -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en" >
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<!-- Website CSS style -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="style.css">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+		<title>Arreglando Tu Cocina</title>
+	</head>
+	<body class="center">
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h5></h5>
+					<form class="" method="post" >
+						{% csrf_token %}
+						
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-flag" aria-hidden="true"></i></span>
+								<select  name="teamid" class="form-control">
+									<option value="1">支持 桃猿</option>
+									<option value="2">支持 統一獅</option>
+									<option value="3">支持 富邦悍將</option>
+									<option value="4">支持 中信兄弟</option>
+									<option value="5">支持 中華職棒</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<!--<label for="name" class="cols-sm-2 control-label">Nombre</label>-->
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="membername" id="membername"  placeholder="真實姓名">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--<label for="name" class="cols-sm-2 control-label">Nombre</label>-->
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" id="name"  placeholder="暱稱">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="email" id="email"  placeholder="信箱"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<!--<label for="password" class="cols-sm-2 control-label">Contraseña</label>-->
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								<input type="password" class="form-control" name="password" id="password"  placeholder="密碼"/>
+							</div>
+						</div>
+					</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<select  name="newsletter" class="form-control" placeholder="收取電子報">
+									<option value="yes">取得電子報</option>
+									<option value="no">取消電子報</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--<label for="name" class="cols-sm-2 control-label">Nombre</label>-->
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="phoneno" id="name"  placeholder="連絡電話">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--<label for="email" class="cols-sm-2 control-label">Email</label>-->
+
+						<div class="form-group">
+							<!--<label for="username" class="cols-sm-2 control-label">Usuario</label>-->
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="address" id="username"  placeholder="地址"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-venus fa-lg" aria-hidden="true"></i></span>
+								<select  name="gender" class="form-control" placeholder="性別">
+									<option value="1">男生</option>
+									<option value="2">女生</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<button type="submit" class="btn btn-primary btn-lg btn-block login-button" >註冊</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	</body>
+</html>
+
+<!-- ----------------------------------------------------------------- -->
+
+	{% include 'footer.html'%}
