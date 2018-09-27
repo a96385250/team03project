@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from search.models  import Articles, Teams
-from player.models import Players,Teams
+from player.models import Players,Teams as tem
+from store.models import Productcat,Products,Teams
 from django.http import HttpResponse
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
-from .modelsproduct import Member
 
 
 
@@ -28,7 +28,8 @@ def screate(request):
 
 def sread(request):
     articles = Articles.objects.all()
-    teams = Teams.objects.all()
+    for article in articles:
+        print(article.title)
 
     return render(request,'search/read.html',locals())
 
@@ -43,13 +44,16 @@ def supdate(request):
 
         Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
         return redirect("/edit/sread/")
+<<<<<<< HEAD
         
+=======
+>>>>>>> 354d3bae01f9d2fed9aaa8a00954966d96387df7
 
     # article = Articles.objects.get(articleid=articleid)
     # teams = Teams.objects.all()
 
     return render(request,'search/update.html',locals())
-    
+ 
 def sdelete(request, articleid):
     article = Articles.objects.get(articleid=articleid)
     article.delete()
@@ -73,7 +77,7 @@ def aien0313crte(request):
         sb = request.POST["sb"]
         so = request.POST["so"]
 
-        Players.objects.create(teamid=Teams.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so)
+        Players.objects.create(teamid=tem.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so)
         return redirect('../playerlist/')
 
 
@@ -84,7 +88,7 @@ def aien0313upd(request,id):
     if request.method =="POST":
         playerupdate = Players.objects.get(playerid=id)
         print(request.POST["teamid"])
-        teamsid=Teams.objects.get(teamname=request.POST["teamid"])
+        teamsid=tem.objects.get(teamname=request.POST["teamid"])
         team = teamsid.teamid
         print(team)
         playername = request.POST["playername"]
@@ -121,8 +125,7 @@ def aien0313del(request,id):
     playerdelete = Players.objects.get(playerid=id)
     playerdelete.delete()
     return redirect('../playerlist/')
-# store
-member = Member()
+
 
 def index(request):  
     title = "管理商品"
@@ -132,7 +135,7 @@ def index(request):
     return render(request,'store/index.html',locals())
 
 def create(request):
-    title = "產品新增"
+    title = "商品新增"
     if request.method == "POST" and request.FILES["image"]:
         categoryid = request.POST["categoryid"]
         productname = request.POST["productname"]
@@ -152,10 +155,32 @@ def create(request):
     return render(request,'store/create.html',locals())
 
 def delete(request, productid):
-    member.delete(productid)
+    products = Products.objects.get(productid=productid)
+    products.delete()
     return redirect("/edit/index/")
+
 def update(request, productid):
-    pass
+    title = "商品更新"
+    if request.method == "POST" and request.FILES["image"]:
+        productname = request.POST["productname"]
+        price = request.POST["price"]
+        productdesc = request.POST["productdesc"]
+        team = Teams.objects.get(teamname=request.POST["teamid"])
+        teamid = team.teamid
+        category = Productcat.objects.get(categoryname=request.POST["categoryid"])
+        categoryid = category.categoryid
+        
+        myFile = request.FILES["image"]
+        fs = FileSystemStorage()
+        image = fs.save(myFile.name,myFile)
+
+        Products.objects.filter(productid=productid).update(productname=productname,price=price,productdesc=productdesc,teamid=teamid)
+        return redirect("/edit/index/")
+
+    products = Products.objects.get(productid=productid)
+    productcat = Productcat.objects.all()
+    teams = Teams.objects.all()
+    return render(request,'store/update.html',locals())
     
 def testencoding(request):
     u1 = "中文"
@@ -163,3 +188,4 @@ def testencoding(request):
     response = HttpResponse("<h2>encoding test</h2>")
     response.set_cookie("u2",u2)
     return response
+
