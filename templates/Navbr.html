@@ -1,8 +1,10 @@
 <!-- Navigation -->
 {% load static %}
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">Yami</a>
+    <a class="navbar-brand" href="{% url 'base:index' %}">Yami</a>
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,13 +34,13 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fab fa-creative-commons-by icon">登入</i>
+          <a class="nav-link dropdown-toggle" href="{% url 'signin:signin' %}" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fab fa-creative-commons-by icon">會員登錄</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-            <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-            <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-            <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+            <a class="dropdown-item" href="{% url 'signin:signin' %}">登錄</a>
+            <a class="dropdown-item" href="{% url 'signin:registered' %}">註冊</a>
+
           </div>
         </li>
         <li class="nav-item"></li>
@@ -49,5 +51,4 @@
           </li>
       </ul>
     </div>
-  </div>
 </nav>

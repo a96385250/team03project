@@ -12,10 +12,10 @@ class Players(models.Model):
     playerid = models.AutoField(primary_key=True)
     playername = models.CharField(max_length=45)
     teamid = models.ForeignKey('Teams', models.DO_NOTHING, db_column='teamid')
-    avg = models.DecimalField(max_digits=3, decimal_places=0)
+    avg = models.DecimalField(max_digits=3, decimal_places=3)
     h = models.IntegerField()
     hr = models.IntegerField()
-    era = models.DecimalField(max_digits=3, decimal_places=0)
+    era = models.DecimalField(max_digits=3, decimal_places=3)
     w = models.IntegerField()
     sv = models.IntegerField()
     rbi = models.IntegerField()
@@ -23,7 +23,6 @@ class Players(models.Model):
     so = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'players'
 
 
@@ -33,5 +32,4 @@ class Teams(models.Model):
     teamname_eng = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'teams'
