@@ -28,21 +28,20 @@ def screate(request):
 
 def sread(request):
     articles = Articles.objects.all()
-    for article in articles:
-        print(article.title)
-
+    teams = Teams.objects.all() 
     return render(request,'search/read.html',locals())
 
 def supdate(request):
     if request.method == "POST":
         atitle = request.POST["title"]
         aurl = request.POST["url"]
+        print(aurl)
         adate = request.POST["date"]
         team = Teams.objects.get(teamname=request.POST["team"])
         ateam=team.teamid
-        atype = request.POST["articletype"]
+        atype = request.POST["type"]
 
-        Articles.objects.filter(articleid=articleid).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
+        Articles.objects.filter(articleid=request.POST["id"]).update(title=atitle, url=aurl, date=adate, teamid=ateam,articletype=atype)
         return redirect("/edit/sread/")
 
     # article = Articles.objects.get(articleid=articleid)
