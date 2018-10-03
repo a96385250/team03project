@@ -4,4 +4,5 @@ from . import views
 app_name="player"
 urlpatterns = [
     path("",views.player,name="index"),
+    path("restapi",views.restapi,name="restapi")
 ]
