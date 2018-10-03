@@ -22,9 +22,12 @@
     {% include 'Navbr.html'%}
     {% block edit %}
     {% endblock %}
-    {% block appcode %}
-    <!--  There start html code -->
-    {% endblock %} 
+    <div id="extrapadding">
+        {% block appcode %}
+        <!--  There start html code -->
+        {% endblock %} 
+    </div>
+
     
     <!-- Footer -->
     {% include 'footer.html'%}
