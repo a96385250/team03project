@@ -17,7 +17,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter
+from todo import views
 
+Playerrouter = DefaultRouter()
+Teamsrouter = DefaultRouter()
+Playerrouter.register(r"todo",views.PlayerViewSet)
+Teamsrouter.register(r"todo",views.TeamsViewSet2)
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('',include('home.urls')),
@@ -26,4 +32,6 @@ urlpatterns = [
     path('store/',include('store.urls')),
     path('search/',include('search.urls')),
     path('player/',include('player.urls')),
+    path('api/',include(Playerrouter.urls)),
+    path('api2/',include(Teamsrouter.urls)),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
