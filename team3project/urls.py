@@ -22,8 +22,8 @@ from todo import views
 
 Playerrouter = DefaultRouter()
 Teamsrouter = DefaultRouter()
-Playerrouter.register(r"todo",views.PlayerViewSet)
-Teamsrouter.register(r"todo",views.TeamsViewSet2)
+Playerrouter.register(r"player",views.PlayerViewSet)
+Teamsrouter.register(r"teams",views.TeamsViewSet2)
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('',include('home.urls')),

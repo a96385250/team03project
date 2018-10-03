@@ -3,10 +3,131 @@
 {% block css %}
 {% endblock %}
 {% block appcode %}
-<h2>123</h2><br>
-<h2>123</h2><br>
-<h2>123</h2><br>
-<h2>123</h2><br>
+<div class="row col-md-9 ">
+    <div class="col-md-9">
+       <table id="todolist" class="table table-editable">
+         <thead>
+            <tr>
+                <th class="text-center">球員名字</th>
+                <th class="text-center">打擊率</th>
+                <th class="text-center">安打數</th>
+                <th class="text-center">全壘打</th>
+                <th class="text-center">防禦率</th>
+                <th class="text-center">勝投</th>
+                <th class="text-center">救援成功</th>
+                <th class="text-center">打點</th>
+                <th class="text-center">盜壘成功</th>
+                <th class="text-center">奪三振</th>
+                <th class="text-center">編輯</th>
+            </tr>
+         </thead>
+         <tbody>
+         </tbody>
+       </table>
+    </div>
+    <div class="col-md-3">
+     <form>
+       <div class="form-group">
+            <label for="InputTitle">球員</label>
+            <input type="text" class="form-control" id="playername" placeholder="球員姓名">         
+       </div>
+       <div class="form-group">
+            <label for="InputText">打擊率</label>
+            <input type="text" class="form-control" id="avg" placeholder="打擊率">
+       </div>
+       <div class="form-group">
+                <label for="InputText">安打數</label>
+                <input type="text" class="form-control" id="h" placeholder="安打數">
+        </div>
+        <div class="form-group">
+                <label for="InputText">全壘打</label>
+                <input type="text" class="form-control" id="hr" placeholder="全壘打">
+        </div>
+        <div class="form-group">
+                <label for="InputText">防禦率</label>
+                <input type="text" class="form-control" id="era" placeholder="防禦率">
+        </div>
+        <div class="form-group">
+                <label for="InputText">勝投</label>
+                <input type="text" class="form-control" id="w" placeholder="勝投">
+        </div> 
+        <div class="form-group">
+                <label for="InputText">救援成功</label>
+                <input type="text" class="form-control" id="sv" placeholder="救援成功">
+        </div>
+        <div class="form-group">
+                <label for="InputText">打點</label>
+                <input type="text" class="form-control" id="rbi" placeholder="打點">
+        </div>
+        <div class="form-group">
+                <label for="InputText">盜壘成功</label>
+                <input type="text" class="form-control" id="sb" placeholder="盜壘成功">
+        </div>
+        <div class="form-group">
+                <label for="InputText">奪三振</label>
+                <input type="text" class="form-control" id="so" placeholder="奪三振">
+        </div>
+                                                 
+       <button type="button" id="buttonSubmit" class="btn btn-primary">Submit</button>
+     </form>
+    </div>
+</div>
 {% endblock %}
 {% block script %}
+<script>
+    $(document).ready(function(){
+        function playerlist(){
+            $.getJSON("/api/player/",function(datas){
+                var tb = $("#todolist>tbody");
+                var docFrag = $(document.createDocumentFragment());
+                $.each(datas,function(index,value){
+                    var cell1 = $("<td class='text-center'></td>").text(value.playername).attr('contenteditable','true');
+                    var cell2 = $("<td class='text-center'></td>").text(value.avg).attr('contenteditable','true');
+                    var cell3 = $("<td class='text-center'></td>").text(value.h).attr('contenteditable','true');
+                    var cell4 = $("<td class='text-center'></td>").text(value.hr).attr('contenteditable','true');
+                    var cell5 = $("<td class='text-center'></td>").text(value.era).attr('contenteditable','true');
+                    var cell6 = $("<td class='text-center'></td>").text(value.w).attr('contenteditable','true');
+                    var cell7 = $("<td class='text-center'></td>").text(value.sv).attr('contenteditable','true');
+                    var cell8 = $("<td class='text-center'></td>").text(value.rbi).attr('contenteditable','true');
+                    var cell9 = $("<td class='text-center'></td>").text(value.sb).attr('contenteditable','true');
+                    var cell10 = $("<td class='text-center'></td>").text(value.so).attr('contenteditable','true');
+                    var but1 = $("<td class='text-center'></td>").html('<button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash-alt"></i></button>')
+                    var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9,cell10,but1])
+                    docFrag.append(row)
+                });
+                tb.html(docFrag)
+            
+            });
+        }
+        playerlist()
+
+    })
+        $("#buttonSubmit").click(function(){
+            var datas={
+                "playername":$("#playername").val(),
+                "avg":$("#avg").val(),
+                "h":$("#h").val(),
+                "hr":$("#hr").val(),
+                "era":$("#era").val(),
+                "w":$("#w").val(),
+                "sv":$("#sv").val(),
+                "rbi":$("#rbi").val(),
+                "sb":$("#sb").val(),
+                "so":$("#so").val(),
+            };
+        $.post("/api/player/",datas,function(data){
+            $("#playername").val("")
+            $("#avg").val("")
+            $("#h").val("")
+            $("#hr").val("")
+            $("#era").val("")
+            $("#w").val("")
+            $("#sv").val("")
+            $("#rbi").val("")
+            $("#sb").val("")
+            $("#so").val("")
+            playerlist()
+        })
+    })
+</script>
 {% endblock %}
