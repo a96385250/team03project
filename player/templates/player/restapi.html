@@ -83,7 +83,7 @@
 {% block script %}
 <script>
     $(document).ready(function(){
-        function teamsselect(){
+        function teamselect(){
             teams = []
             var teamselect = $("<select></select>")
             $.getJSON("/api2/teams/",function(datas){
@@ -111,9 +111,8 @@
 
                 $.each(datas,function(index,value){
                     
-                    var obj = teamsselect()
-                    console.log(obj)
-                    var options=$("<td class='text-center'></td>").append(obj)
+                    var selects = teamselect()
+                    var options=$("<td class='text-center'></td>").append(selects)
                     var cell1 = $("<td class='text-center'></td>").text(value.playername).attr({'id':value.playerid,'contenteditable':'true'});
                     var cell2 = $("<td class='text-center'></td>").text(value.avg).attr('contenteditable','true');
                     var cell3 = $("<td class='text-center'></td>").text(value.h).attr('contenteditable','true');
