@@ -5,4 +5,5 @@ app_name = "store"
 
 urlpatterns = [
     path('',views.store,name="store"),
+    path('category/<int:teamid>',views.category,name="category"),
 ]
