@@ -1,0 +1,63 @@
+{% extends "app.html" %}
+{% load static %}
+{% block css %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+.containers{
+    padding-top: 100px;
+    padding-bottom: 85px;
+}
+</style>
+{% endblock %}
+
+{% block appcode %}
+<div class="containers">
+    <div class="container">
+
+    <div class="form-sec">
+    <h4>會員修改</h4>
+    
+        <form name="qryform" id="qryform" method="post" >
+            {% csrf_token %}
+            <div class="form-group">
+            <label>Name:</label>
+            <select  name="teamid" class="form-control">
+                <option value="1">支持 桃猿</option>
+                <option value="2">支持 統一獅</option>
+                <option value="3">支持 富邦悍將</option>
+                <option value="4">支持 中信兄弟</option>
+                <option value="5">支持 中華職棒</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label>暱稱:</label>
+            <input type="text" class="form-control" name="username" id="name"  placeholder="暱稱">
+            </div>
+            
+            <div class="form-group">
+            <label>連絡電話:</label>
+            <input type="text" class="form-control" name="phoneno" id="name"  placeholder="暱稱">
+            </div>
+            
+            <div class="form-group">
+            <label>密碼:</label>
+            <input type="password" class="form-control" name="password" id="password" data-indicator="pwindicator" placeholder="密碼"/>
+            </div>
+            
+            <div class="form-group">
+            <label>地址:</label> 
+            <input type="text" class="form-control" name="address" id="username"  placeholder="地址"/>
+            </div>
+
+            
+            <button type="submit" class="btn btn-default">送出</button>
+
+        </form>
+    </div>
+
+
+    </div>
+</div>
+<!--  There start html code -->
+{% endblock %} 
