@@ -7,3 +7,6 @@ def player(request) :
     # players = Players.objects.all()
     strJS = "<script>location.href='/edit/aien0313crte/'</script>"
     return HttpResponse(strJS)
+def restapi(request):
+    return render(request,'player/restapi.html',locals()) 
+

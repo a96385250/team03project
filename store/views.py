@@ -12,5 +12,11 @@ def store(request):
     #呼叫方法
     teams = Teams.objects.all()
     products = Products.objects.all()
-    productcat = Productcat.objects.all()
     return render(request,'store/store.html',locals())
+
+def category(request,teamid):
+    title = "隊伍商城"
+    teamid = Teams.objects.get(teamid = teamid)
+    teams = Teams.objects.all()
+    products = Products.objects.filter(teamid = teamid).all
+    return render(request,'store/category.html',locals())
