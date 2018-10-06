@@ -4,6 +4,7 @@ from .models import Players,Teams
 import requests
 from bs4 import BeautifulSoup
 import re
+
 # Create your views here.
 
 def player(request) :
@@ -23,13 +24,28 @@ def catch(request):
 
     player =requests.get(url,params=url_params,headers=headers)
     playerdata=BeautifulSoup(player.text,"lxml")
-    
+
     playerlist = playerdata.select("table.std_tb tr")
+    print(type(playerdata))
     for playerdatas in playerlist:
-        # print(playerdatas.find("a").get_text())
+        playername = playerdatas.find("a").get_text()
+        print(playerdatas.find("a").get_text())
+        avgtds = playerdatas.select("td:nth-of-type(18)")
+        htds =  playerdatas.select("td:nth-of-type(8)")
+        hrtds = playerdatas.select("td:nth-of-type(12)")
+
+        for avgs in avgtds:
+            avg = avgs.string 
+            print(avgs.string)
+            for hs in htds:
+                hs = hs.string
+                print(hs.string)
+                for hrs in hrtds:
+                    hr = hrs.string
+                    print(hrs.string)
         # print(playerdatas.find_all("td"))
-        for playertd in playerdatas.find_all("td"):
-            print(playerdatas.find('td').get_text)
+        # for playertd in playerdatas.find_all("td"):
+        #     print(playerdatas.find('td').get_text())
 
         # a = playerdatas.findAll('td')[17:18]
         # for b in a:
@@ -38,7 +54,6 @@ def catch(request):
         # print(playerdatas.findAll('td')[17:18])
         # print(playerdatas.findAll('td')[7:8])
         
-
     return render(request,'player/catch.html') 
 def restapi(request):
     return render(request,'player/restapi.html') 
