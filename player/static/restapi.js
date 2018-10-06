@@ -50,11 +50,44 @@ $(document).ready(function(){
         });
     }
 
-    playerlist()
+    function webgettest(){
+        playerslist=[]
+        $.getJSON("/player/catch",function(datas){
+            $.each(datas,function(index,value){
+                playerjson={
+                    "playername": value.playername,
+                    "avg": value.avg,
+                    "h": value.h,
+                    "hr": value.hr,
+                    "era": value.era,
+                    "w": value.w,
+                    "sv": value.sv,
+                    "rbi": value.rbi,
+                    "sb": value.sb,
+                    "so": value.so,
+                    "teamid": value.teamid
+                }
+                playerslist.push(playerjson)
+            })
+            // console.log(playerslist)        
+        })
+         console.log(playerslist)
+
+    }
+    function wbeposttest(datas){
+        $.each(datas,function(index,value){
+            console.log(value)
+        })
+    }
+
+    webgettest()
+    // wbeposttest()
+    playerlist() 
         $("#team").change(function(){
             teamid = $("#team >:selected").attr("id");
         })
         $("#buttonSubmit").click(function(){
+            teamid=1
             var datas={
                 "teamid":teamid,
                 "playername":$("#playername").val(),
