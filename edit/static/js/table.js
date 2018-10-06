@@ -6,7 +6,7 @@ $(document).ready(function(){
         var title = $('#atitle'+id).html()
         var url = $('#aurl'+id).html()
         var date = $('#adate'+id).html()
-        var team = $('#ateam'+id).html()
+        var team = $('#ateam' + id +'>:selected').text()
         var type = $('#atype'+id).html()
         var datas = {
             "id": id,
@@ -16,16 +16,13 @@ $(document).ready(function(){
             "team": team,
             "type": type
         }
-        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-        $.ajax({  
-            type: "POST",  
-            data: datas, 
-            headers:{
-                "X-CSRFToken": csrftoken
-            },
-            url: "/edit/supdate/",
 
-            });
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/edit/supdate/",
+            data: datas,
+        })
     })
 })
 

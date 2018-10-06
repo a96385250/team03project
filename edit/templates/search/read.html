@@ -34,7 +34,9 @@
             {% endfor %}
         </tbody>
      </table>
+     {% csrf_token %}
 {% endblock%}
 {% block script %}
+<script type="text/javascript" src="{% static 'js/beforesend.js'%}"></script>
 <script type="text/javascript" src="{% static 'js/table.js'%}"></script>
 {% endblock %}

@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'yamidb',
         'USER':'root',
-        'PASSWORD':'root',
+        'PASSWORD':'yen810327',
         'HOST':'localhost'
     }
 }
