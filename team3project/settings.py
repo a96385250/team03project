@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'store',
     'search',
     'player',
+    'todo',
     "rest_framework"
 
 ]
