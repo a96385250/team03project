@@ -8,6 +8,9 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
 
 
+def search(request): 
+    title = "Restfual api"
+    return render(request,'search/api.html',locals())
 
 # Create your views here.
 def edit(request):

@@ -1,0 +1,37 @@
+{% extends "edit.html" %}
+{% load static %}
+{% block appcode %}
+
+<h1>Web Crawler controls</h1>
+<button id="crawl" class="btn btn-success"><i class="fas fa-bug"></i></button>
+
+<hr>
+<form>
+    <h1>Data List</h1>
+    <table class="table table-striped" id="tblList">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Teamid</th>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Image Url</th>
+                <th>date</th>
+                <th>Summary</th>
+                <th>Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</form>
+    <button id="add" class="btn btn-success" id="addrow"><i class="fas fa-plus"></i></button>
+
+{% endblock%}
+{% block script %}
+<script>
+$.getScript("{% static 'js/table.js'%}", function(j){})
+</script>
+<!-- <script src="{% static 'js/table.js'%}"></script> -->
+{% endblock %}

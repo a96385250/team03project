@@ -38,3 +38,7 @@
   #extrapadding {
     padding-top: 50px;
   }
+
+  table{
+    display:block
+  }

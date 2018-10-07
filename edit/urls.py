@@ -19,5 +19,5 @@ urlpatterns = [
     path('create/',views.create,name="create"),
     path('delete/<int:productid>',views.delete,name="delete"),
     path('update/<int:productid>',views.update,name="update"),
-
+    path('searchapi/',views.search,name="searchapi"),
 ]
