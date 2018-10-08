@@ -21,5 +21,4 @@ urlpatterns = [
     path('update/<int:productid>',views.update,name="update"),
     path('searchapi/',views.search,name="searchapi"),
     path("person",views.person,name="person"),
-
 ]

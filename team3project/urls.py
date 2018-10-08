@@ -43,10 +43,7 @@ urlpatterns = [
     path('player/',include('player.urls')),
     path('api/',include(Playerrouter.urls)),
     path('api2/',include(Teamsrouter.urls)),
-<<<<<<< HEAD
     path('api/',include(Articlesrouter.urls)),
-=======
     path('api3/',include(Membersrouter.urls)),
 
->>>>>>> 123
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
