@@ -1,33 +1,31 @@
-<<<<<<< HEAD
-$(document).ready(function(){
-    $('a[name^="upload"]').click(function(){
-        value = $(this).attr("name")
-        var id = value.substr(value.indexOf("#") + 1)
+// $(document).ready(function(){
+//     $('a[name^="upload"]').click(function(){
+//         value = $(this).attr("name")
+//         var id = value.substr(value.indexOf("#") + 1)
 
-        var title = $('#atitle'+id).html()
-        var url = $('#aurl'+id).html()
-        var date = $('#adate'+id).html()
-        var team = $('#ateam' + id +'>:selected').text()
-        var type = $('#atype'+id).html()
-        var datas = {
-            "id": id,
-            "title": title,
-            "url": url,
-            "date": date,
-            "team": team,
-            "type": type
-        }
+//         var title = $('#atitle'+id).html()
+//         var url = $('#aurl'+id).html()
+//         var date = $('#adate'+id).html()
+//         var team = $('#ateam' + id +'>:selected').text()
+//         var type = $('#atype'+id).html()
+//         var datas = {
+//             "id": id,
+//             "title": title,
+//             "url": url,
+//             "date": date,
+//             "team": team,
+//             "type": type
+//         }
 
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: "/edit/supdate/",
-            data: datas,
-        })
-    })
-})
+//         $.ajax({
+//             type: "POST",
+//             dataType: "json",
+//             url: "/edit/supdate/",
+//             data: datas,
+//         })
+//     })
+// })
 
-=======
 $(document).ready(function(){
     var teams
 
@@ -36,7 +34,7 @@ $(document).ready(function(){
     }
     
     function getTeam(){
-        $.getJSON('/api2/todo/',callbackFuncWithData);
+        $.getJSON('/api2/teams/',callbackFuncWithData);
     }
 
     function loadSearch(){
@@ -52,7 +50,7 @@ $(document).ready(function(){
                     if(teams.teamid == article.teamid){
                         option.attr("selected",true)
                     }
-                selected.append(option)
+                    selected.append(option)
                 })
                 var cell2 = $('<td></td>').append(selected)
                 var cell3 = $('<td></td>').text(article.title).attr('contenteditable','true')
@@ -178,4 +176,3 @@ $(document).ready(function(){
     
 })
 
->>>>>>> aee0e71a7be3d65d4806e5b886b212e55cea108e
