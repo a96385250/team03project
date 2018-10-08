@@ -20,7 +20,7 @@
         <form name="qryform" id="qryform" method="post" >
             {% csrf_token %}
             <div class="form-group">
-            <label>Name:</label>
+            <label>支持隊伍:</label>
             <select  name="teamid" class="form-control">
                 <option value="1">支持 桃猿</option>
                 <option value="2">支持 統一獅</option>
@@ -32,12 +32,12 @@
 
             <div class="form-group">
             <label>暱稱:</label>
-            <input type="text" class="form-control" name="username" id="name"  placeholder="暱稱">
+            <input type="text" class="form-control" name="username" id="username"  placeholder="暱稱">
             </div>
             
             <div class="form-group">
             <label>連絡電話:</label>
-            <input type="text" class="form-control" name="phoneno" id="name"  placeholder="暱稱">
+            <input type="text" class="form-control" name="phoneno" id="phoneno"  placeholder="連絡電話">
             </div>
             
             <div class="form-group">
@@ -47,11 +47,11 @@
             
             <div class="form-group">
             <label>地址:</label> 
-            <input type="text" class="form-control" name="address" id="username"  placeholder="地址"/>
+            <input type="text" class="form-control" name="address" id="address"  placeholder="地址"/>
             </div>
 
             
-            <button type="submit" class="btn btn-default">送出</button>
+            <button type="submit" class="btn btn-default" id ="thebut">送出</button>
 
         </form>
     </div>
@@ -61,3 +61,25 @@
 </div>
 <!--  There start html code -->
 {% endblock %} 
+{% block script %}
+<script>
+     $(document).ready(function(){
+        $("#thebut").click(function(){
+            if($("#name").val()==""){
+                alert("你尚未填寫姓名");
+                eval("document.form1['name'].focus()");       
+            }else if($("#phoneno").val()==""){
+                alert("你尚未填寫電話");
+                eval("document.form1['phoneno'].focus()");    
+            }else if($("#username").val()==""){
+                alert("你尚未填寫地址");
+                eval("document.form1['address'].focus()");       
+            }else{
+                document.form1.submit();
+            }
+        })
+ })
+
+</script>
+
+{% endblock %}

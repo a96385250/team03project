@@ -110,5 +110,5 @@ def revise(request):
         Members.objects.filter(memberid=memberid).update(teamid=Teams.objects.get(teamid=teamid),password=password,phoneno=phoneno,username=username,address=address)
         #轉到會員的首頁上
         return redirect("/")
-
+    
     return render(request,"revise.html")

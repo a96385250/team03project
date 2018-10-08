@@ -42,7 +42,7 @@
                 </div> <!-- /widget -->
         </div>
     <div class="td-actions">
-        <a href="javascript:;" class="btn btn-small btn-primary" id= "butOk" >
+        <a href="javascript:;" class="btn btn-small btn-primary" id= "butOk" name = "butOk">
             <i class="fas fa-check"></i>
         </a>
         
@@ -63,47 +63,58 @@
         // <讀取資料=================================================================>
 $(document).ready(function(){
     function loadTodo(){
-      $.getJSON('/api3/Member/',function(datas){
-          // console.log(datas)
-          var tb =  $('#tbodyId');
-          var docFrag = $(document.createDocumentFragment())
-          $.each(datas,function(idx,Member){
+        $.getJSON('/api3/Member/',function(datas){
+            // console.log(datas)
+            var tb =  $('#tbodyId');
+            var docFrag = $(document.createDocumentFragment())
+            $.each(datas,function(idx,Member){
 
-              var cell1 = $('<td></td>').text(Member.teamid)
-              var cell2 = $('<td></td>').text(Member.email).attr('contenteditable','true')
-              var cell3 = $('<td></td>').text(Member.password).attr('contenteditable','true')
-              var cell4 = $('<td></td>').text(Member.newsletter).attr('contenteditable','true')
-              var cell5 = $('<td></td>').text(Member.phoneno).attr('contenteditable','true')
-              var cell6 = $('<td></td>').text(Member.username ).attr('contenteditable','true')
-              var cell7 = $('<td></td>').text(Member.membername ).attr('contenteditable','true')
-              var cell8 = $('<td></td>').text(Member.address ).attr('contenteditable','true')
+                var cell1 = $('<td></td>').text(Member.teamid)
+                var cell2 = $('<td></td>').text(Member.email).attr('contenteditable','true')
+                var cell3 = $('<td></td>').text(Member.password).attr('contenteditable','true')
+                var cell4 = $('<td></td>').text(Member.newsletter).attr('contenteditable','true')
+                var cell5 = $('<td></td>').text(Member.phoneno).attr('contenteditable','true')
+                var cell6 = $('<td></td>').text(Member.username ).attr('contenteditable','true')
+                var cell7 = $('<td></td>').text(Member.membername ).attr('contenteditable','true')
+                var cell8 = $('<td></td>').text(Member.address ).attr('contenteditable','true')
 
 
-              var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8])
-              //<tbody><tr>
-              docFrag.append(row)
-          })
-          tb.html(docFrag)
+                var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8])
+                //<tbody><tr>
+                // docFrag.append(row)
+            })
+
+
+
+            
+            tb.html(docFrag)
+
+            
+            // tb.html(docFrag)
       })
-    }
 
+    }
+    loadTodo()
     // <新增資料=================================================================>
     $("#butOk").on("click","#butOk",function(){
-       var row={
-        "teamid": $('#teamid').val(),
-        "email": $('#email').val(),
-        "password": $('#password').val(),
-        "phoneno": $('#phoneno').val(),
-        "username": $('#username').val(),
-        "membername": $('#membername').val(),
-        "address": $('#address').val()
-       }
-        $.ajax({
-            'url':'/api3/Member/',
-            'type':'POST',
-            'data':row
-        })
-    loadTodo()
+        var tb =  $('#tbodyId');
+        var docFrag = $(document.createDocumentFragment())
+
+            var cell01 = $('<td></td>').text("")
+            var cell02 = $('<td></td>').text("").attr('contenteditable','true')
+            var cell03 = $('<td></td>').text("").attr('contenteditable','true')
+            var cell04 = $('<td></td>').text("").attr('contenteditable','true')
+            var cell05 = $('<td></td>').text("").attr('contenteditable','true')
+            var cell06 = $('<td></td>').text("").attr('contenteditable','true')
+            var cell07 = $('<td></td>').text("").attr('contenteditable','true')
+            var cell08 = $('<td></td>').text("").attr('contenteditable','true')
+
+            var row1 = $('<tr></tr>').append([cell01,cell02,cell03,cell04,cell05,cell06,cell07,cell08])
+        // docFrag.append(row)
+
+        docFrags.append(row,row01)
+
+
     })
 
 })
