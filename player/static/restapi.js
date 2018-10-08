@@ -26,9 +26,7 @@ $(document).ready(function(){
         $.getJSON("/api/player/",function(datas){
             var tb = $("#todolist>tbody");
             var docFrag = $(document.createDocumentFragment());
-
-            $.each(datas,function(index,value){
-                
+            $.each(datas,function(index,value){                
                 var selects = teamselect(value.teamid)
                 var options=$("<td class='text-center'></td>").append(selects)
                 var cell1 = $("<td class='text-center'></td>").text(value.playername).attr({'id':value.playerid,'contenteditable':'true'});
@@ -51,28 +49,28 @@ $(document).ready(function(){
     }
 
     function webgettest(){
-        playerslist=[]
         $.getJSON("/player/catch",function(datas){
             $.each(datas,function(index,value){
-                playerjson={
-                    "playername": value.playername,
-                    "avg": value.avg,
-                    "h": value.h,
-                    "hr": value.hr,
-                    "era": value.era,
-                    "w": value.w,
-                    "sv": value.sv,
-                    "rbi": value.rbi,
-                    "sb": value.sb,
-                    "so": value.so,
-                    "teamid": value.teamid
-                }
-                playerslist.push(playerjson)
+                $.post("/api/player/",value,function(data){                 
+                }) 
+                // playerjson={
+                //     "playername": value.playername,
+                //     "avg": value.avg,
+                //     "h": value.h,
+                //     "hr": value.hr,
+                //     "era": value.era,
+                //     "w": value.w,
+                //     "sv": value.sv,
+                //     "rbi": value.rbi,
+                //     "sb": value.sb,
+                //     "so": value.so,
+                //     "teamid": value.teamid
+                // }
+                // playerslist.push(playerjson)
             })
             // console.log(playerslist)        
         })
-         console.log(playerslist)
-
+        //  console.log(playerslist)
     }
     function wbeposttest(datas){
         $.each(datas,function(index,value){
@@ -80,9 +78,10 @@ $(document).ready(function(){
         })
     }
 
-    webgettest()
-    // wbeposttest()
-    playerlist() 
+    // webgettest()
+    playerlist()
+    // // wbeposttest()
+   
         $("#team").change(function(){
             teamid = $("#team >:selected").attr("id");
         })

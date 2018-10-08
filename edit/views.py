@@ -8,6 +8,13 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
 
 
+def search(request): 
+    title = "Restfual api"
+    return render(request,'search/api.html',locals())
+
+def stats(request): 
+    title = "Stats"
+    return render(request,'search/stats.html',locals())
 
 # Create your views here.
 def edit(request):
@@ -183,4 +190,6 @@ def testencoding(request):
     response = HttpResponse("<h2>encoding test</h2>")
     response.set_cookie("u2",u2)
     return response
+def person(request):
+    return render(request,'personnelManagement/index.html',locals())
 
