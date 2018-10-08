@@ -11,7 +11,7 @@ import time
 
 
 # Create your views here.
-webdata=webdatas()
+# webdata=webdatas()
 
 def player(request) :
     # players = Players.objects.all()
@@ -23,7 +23,8 @@ def catch(request):
     time.sleep(2)
     for teamlist in teamslist:
 
-        url="http://www.cpbl.com.tw/web/team_player.php"
+        url="http://www.cpbl.com.tw/web/team_playergrade.php"
+        url2="http://www.cpbl.com.tw/web/team_playergrade.php?&grade=2"
     
         url_params={
             "team":teamlist
@@ -33,13 +34,44 @@ def catch(request):
         }
 
         teams =requests.get(url,params=url_params,headers=headers)
+        teamsp =requests.get(url2,params=url_params,headers=headers)
         team=BeautifulSoup(teams.text,"lxml")
+        teamp=BeautifulSoup(teamsp.text,"lxml")
 
         playerslist = team.select("table.std_tb tr")
+        playersplist = teamp.select("table.std_tb tr")
         del(playerslist[0])
-        print(playerslist) 
+        del(playersplist[0])
+        # print(playerslist)
 
+        for playerdatas in playerslist:
+            teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerdatas.find("a")["href"])
+            teamname=teamidpatten.group("teamname")
+            playername = playerdatas.find("a").get_text().strip()
+            print(playername)
+            avg = playerdatas.select("td:nth-of-type(18)")[0].get_text()
+            ht =  playerdatas.select("td:nth-of-type(8)")[0].get_text()
+            hr = playerdatas.select("td:nth-of-type(12)")[0].get_text()
+            sb = playerdatas.select("td:nth-of-type(14)")[0].get_text()
+            rbi =  playerdatas.select("td:nth-of-type(6)")[0].get_text()
+            print(avg)
+            print(ht)
+            print(hr)
+            print(sb)
 
+        for playerpdatas in playersplist:
+            teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerpdatas.find("a")["href"])
+            teamname=teamidpatten.group("teamname")
+            playername = playerpdatas.find("a").get_text().strip()
+            print(playername)
+            era = playerpdatas.select("td:nth-of-type(16)")[0].get_text()
+            w =  playerpdatas.select("td:nth-of-type(9)")[0].get_text()
+            sv = playerpdatas.select("td:nth-of-type(11)")[0].get_text()
+            so = playerpdatas.select("td:nth-of-type(24)")[0].get_text()
+            print(era)
+            print(w)
+            print(sv)
+            print(so)
 
 
     # del(playerlist[0])
