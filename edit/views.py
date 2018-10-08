@@ -12,6 +12,10 @@ def search(request):
     title = "Restfual api"
     return render(request,'search/api.html',locals())
 
+def stats(request): 
+    title = "Stats"
+    return render(request,'search/stats.html',locals())
+
 # Create your views here.
 def edit(request):
     return render(request,'edit/edit.html')

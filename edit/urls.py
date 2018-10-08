@@ -20,4 +20,5 @@ urlpatterns = [
     path('delete/<int:productid>',views.delete,name="delete"),
     path('update/<int:productid>',views.update,name="update"),
     path('searchapi/',views.search,name="searchapi"),
+    path('searchstats/',views.stats,name="searchstats"),
 ]

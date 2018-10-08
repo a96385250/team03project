@@ -1,0 +1,16 @@
+{% extends "edit.html" %}
+{% load static %}
+{% block appcode %}
+
+<h1>Charts</h1>
+
+<canvas id="pie-chart" width="800" height="450"></canvas>
+
+{% endblock%}
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script>
+$.getScript("{% static 'js/charts.js'%}", function(j){})
+</script>
+<!-- <script src="{% static 'js/table.js'%}"></script> -->
+{% endblock %}
