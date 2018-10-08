@@ -22,13 +22,10 @@ from todo import views
 
 Playerrouter = DefaultRouter()
 Teamsrouter = DefaultRouter()
-<<<<<<< HEAD
 Articlesrouter = DefaultRouter()
-Articlesrouter.register(r"articles",views.ArticlesViewSet2)
-=======
 Membersrouter = DefaultRouter()
 
->>>>>>> 123
+Articlesrouter.register(r"articles",views.ArticlesViewSet2)
 Playerrouter.register(r"player",views.PlayerViewSet)
 Teamsrouter.register(r"teams",views.TeamsViewSet2)
 Membersrouter.register(r"Member",views.MembersViewSet)
