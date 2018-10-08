@@ -23,9 +23,13 @@ from todo import views
 Playerrouter = DefaultRouter()
 Teamsrouter = DefaultRouter()
 Articlesrouter = DefaultRouter()
+Membersrouter = DefaultRouter()
+
 Articlesrouter.register(r"articles",views.ArticlesViewSet2)
 Playerrouter.register(r"player",views.PlayerViewSet)
 Teamsrouter.register(r"teams",views.TeamsViewSet2)
+Membersrouter.register(r"Member",views.MembersViewSet)
+
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('',include('home.urls')),
@@ -37,4 +41,6 @@ urlpatterns = [
     path('api/',include(Playerrouter.urls)),
     path('api2/',include(Teamsrouter.urls)),
     path('api/',include(Articlesrouter.urls)),
+    path('api3/',include(Membersrouter.urls)),
+
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

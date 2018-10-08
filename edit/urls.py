@@ -20,5 +20,9 @@ urlpatterns = [
     path('delete/<int:productid>',views.delete,name="delete"),
     path('update/<int:productid>',views.update,name="update"),
     path('searchapi/',views.search,name="searchapi"),
+<<<<<<< HEAD
     path('searchstats/',views.stats,name="searchstats"),
+=======
+    path("person",views.person,name="person"),
+>>>>>>> 9012efb56268c28a8955b283e0367d53ee41ddc7
 ]
