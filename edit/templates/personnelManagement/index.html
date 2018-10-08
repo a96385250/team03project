@@ -86,7 +86,7 @@ $(document).ready(function(){
           tb.html(docFrag)
       })
     }
-    loadTodo()
+
     // <新增資料=================================================================>
     $("#butOk").on("click","#butOk",function(){
        var row={
@@ -102,9 +102,8 @@ $(document).ready(function(){
             'url':'/api3/Member/',
             'type':'POST',
             'data':row
-        }).done(function(data){
-            loadTodo()
         })
+    loadTodo()
     })
 
 })
