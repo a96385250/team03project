@@ -107,7 +107,7 @@ def revise(request):
         phoneno = request.POST["phoneno"]  #w124@gmail.com
         password = request.POST["password"]  
         address = request.POST["address"] 
-        Members.objects.filter(memberid=memberid).create(teamid=Teams.objects.get(teamid=teamid),password=password,phoneno=phoneno,username=username,address=address)
+        Members.objects.filter(memberid=memberid).update(teamid=Teams.objects.get(teamid=teamid),password=password,phoneno=phoneno,username=username,address=address)
         #轉到會員的首頁上
         return redirect("/")
 

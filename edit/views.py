@@ -186,4 +186,6 @@ def testencoding(request):
     response = HttpResponse("<h2>encoding test</h2>")
     response.set_cookie("u2",u2)
     return response
+def person(request):
+    return render(request,'personnelManagement/index.html',locals())
 
