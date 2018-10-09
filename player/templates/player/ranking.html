@@ -21,10 +21,17 @@
 <script>
     $(document).ready(function(){
         var tb = $("#todolist>tbody")
+        var docFrag = $(document.createDocumentFragment());
         $.get("/player/rankingdata",function(datas){
             data = JSON.parse(datas)
-            $.each(data,function(index,value){ 
+            $.each(data,function(index,value){
+                var teaname = $("<td class='text-center'></td>").text(value.playerteamid)
+                var playername = $("<td class='text-center'></td>").text(value.playername)
+                var playeravg = $("<td class='text-center'></td>").text(value.playeravg)                
+                var row = $("<tr></tr>").append([teaname,playername,playeravg])
+                docFrag.append(row)
             })
+            tb.html(docFrag)
         })
 
     })
