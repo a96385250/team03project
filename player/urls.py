@@ -4,5 +4,6 @@ from . import views
 app_name="player"
 urlpatterns = [
     path("",views.player,name="index"),
+    path("catch",views.catch,name="catch"),
     path("restapi",views.restapi,name="restapi")
 ]
