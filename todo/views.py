@@ -24,6 +24,6 @@ class ArticlesViewSet2(viewsets.ModelViewSet):
         search_fields = ('title',)
         ordering_fields = ('date',)
 
-class MembersViewSet(viewsets.ModelViewSet):
-        queryset = Members.objects.all()
-        serializer_class = MembersSerializreteams
+# class MembersViewSet(viewsets.ModelViewSet):
+#         queryset = Members.objects.all()
+#         serializer_class = MembersSerializreteams
