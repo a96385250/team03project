@@ -2,7 +2,7 @@
 {% block appcode %}
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-<div>
+<div style="padding-right:1350px">
   <label for="select2" >隊伍</label>
   <div>
     <select id="select2" name="teamid" class="form-control">
@@ -12,7 +12,7 @@
     </select>
   </div>
 </div>
-<div>
+<div style="padding-right:1350px">
   <label for="select1" >分類</label>
   <div>
     <select id="select1" name="categoryid" class="form-control">
@@ -25,13 +25,13 @@
 <div>
   <label for="inputName">名稱</label>
     <div>
-      <input type="text" id="inputName" placeholder="Name" name="productname">
+      <input type="text" id="inputName" placeholder="Name" name="productname" size="37">
     </div>
   </div>
   <div >
-    <label for="inputUnitcost" >價格</label>
+    <label for="inputUnitcost">價格</label>
     <div>
-      <input type="text" id="inputUnitcost" placeholder="Price" name="price">
+      <input type="text" id="inputUnitcost" placeholder="Price" name="price" size="37">
     </div>
   </div>
   <div>

@@ -18,7 +18,7 @@
                 <td style="border:2px solid black">{{products.productdesc}}</td>
                 <td style="border:2px solid black"><img src="/media/{{products.image}}" width = "100" /></td>
                 <td style="border:2px solid black"><a href="{% url "admin:update" products.productid %}">更新</a>
-                <br><a href="{% url "admin:delete" products.productid %}">刪除</a>
+                <br><a href = "{% url "admin:delete" products.productid %}">刪除</a>
                 </td>
             </tr>
             {% endfor %}
