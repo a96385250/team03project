@@ -10,6 +10,8 @@ from rest_framework import viewsets
 class PlayerViewSet(viewsets.ModelViewSet):
         queryset = Players.objects.all()
         serializer_class = PlayerSerializre
+        filter_backends = (filters.SearchFilter,filters.OrderingFilter,)
+        ordering_fields = ('avg',)
 
 class TeamsViewSet2(viewsets.ModelViewSet):
         queryset = Teams.objects.all()

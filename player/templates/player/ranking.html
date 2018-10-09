@@ -1,0 +1,32 @@
+{% extends "app.html" %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block appcode %}
+<div class="container mt-5">
+        <table id="todolist" class="table table-editable">
+            <thead>
+                <tr>
+                    <th class="text-center">球隊</th>
+                    <th class="text-center">球員名字</th>                     
+                    <th class="text-center">打擊率</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function(){
+        var tb = $("#todolist>tbody")
+        $.get("/player/rankingdata",function(datas){
+            data = JSON.parse(datas)
+            $.each(data,function(index,value){ 
+            })
+        })
+
+    })
+</script>
+{% endblock %}

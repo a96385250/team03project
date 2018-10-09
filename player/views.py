@@ -40,10 +40,12 @@ def catch(request):
         teamp=BeautifulSoup(teamsp.text,"lxml")
 
         playerslist = team.select("table.std_tb tr")
-        playersplist = teamp.select("table.std_tb tr")
+        playersplist = teamp.select("table.std_tb > tr")
         del(playerslist[0])
-        del(playersplist[0])
+        # del(playersplist[0])
         teamid=1
+        ab=0
+        ip=0.0
         avg=0.00
         era=0.00
         h=0
@@ -53,17 +55,19 @@ def catch(request):
         rbi=0
         sb=0
         so=0
+        hld=0
         for playerdatas in playerslist:
             teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerdatas.find("a")["href"])
             teamname=teamidpatten.group("teamname")
             playername = playerdatas.find("a").get_text().strip()
             print(playername)
+            ab =  playerdatas.select("td:nth-of-type(5)")[0].get_text()
             avg = playerdatas.select("td:nth-of-type(18)")[0].get_text()
             ht =  playerdatas.select("td:nth-of-type(8)")[0].get_text()
             hr = playerdatas.select("td:nth-of-type(12)")[0].get_text()
             sb = playerdatas.select("td:nth-of-type(14)")[0].get_text()
             rbi =  playerdatas.select("td:nth-of-type(6)")[0].get_text()
-            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so)
+            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip)
             playersdbdata.create(playerdb)
 
             if teamname == "A":
@@ -75,6 +79,7 @@ def catch(request):
             elif teamname == "E":
                 teamid =4 
               
+            print(ab)  
             print(avg)
             print(ht)
             print(hr)
@@ -86,11 +91,13 @@ def catch(request):
             teamname=teamidpatten.group("teamname")
             playername = playerpdatas.find("a").get_text().strip()
             print(playername)
+            ip = playerpdatas.select("td:nth-of-type(14)")[0].get_text()
             era = playerpdatas.select("td:nth-of-type(16)")[0].get_text()
             w =  playerpdatas.select("td:nth-of-type(9)")[0].get_text()
             sv = playerpdatas.select("td:nth-of-type(11)")[0].get_text()
             so = playerpdatas.select("td:nth-of-type(24)")[0].get_text()
-            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so)
+            hld = playerpdatas.select("td:nth-of-type(13)")[0].get_text()
+            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip)
             playersdbdata.create(playerdb)
 
             if teamname == "A":
@@ -100,14 +107,34 @@ def catch(request):
             elif teamname == "B":
                 teamid = 3
             elif teamname == "E":
-                teamid =4  
+                teamid =4
 
-            print(teamid)
+            print(ip)
             print(era)
             print(w)
             print(sv)
             print(so)
+            print(hld)
+            print(teamid)
     return render(request,'player/catch.html') 
+
+def ranking(request):
+    return render(request,'player/ranking.html') 
+
+def rankingdata(request):
+    avgdatas=[]
+    playersavg=playersdbdata.read()
+    for playeravg in playersavg:
+        avgdata={
+            "playerteamid":playeravg[0],
+            "playername":playeravg[1],
+            "playeravg":float(playeravg[2])
+        }
+        avgdatas.append(avgdata)
+
+    avgdatajson = json.dumps(avgdatas)
+    return HttpResponse(avgdatajson)
+
     
 def restapi(request):
     return render(request,'player/restapi.html') 

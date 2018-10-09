@@ -3,14 +3,14 @@ from django.db import connection
 class playersdb:
     def read(self):
         with connection.cursor() as cursor:
-            sql = "select playername from players"
+            sql = "SELECT teamid,playername,avg from players where ab >345 ORDER BY avg DESC LIMIT 5"
             cursor.execute(sql)
             playerread =  cursor.fetchall()
         return playerread
 
     def create(self,players):
         with connection.cursor() as cursor:
-            sql = "insert into players(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            sql = "insert into players(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
             cursor.execute(sql, players)
 
     def delete(self):
