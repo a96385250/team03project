@@ -6,9 +6,11 @@ import json
 import time
 import urllib.parse as UP
 import pymysql as mysql
-# Create your views here.
-
-
+from django.http import HttpResponse
+from django.core import serializers
+from django.db import connection
+from search.models import Articles
+from django.db.models import Count
 def search(request):
     render(request,'index.html')
 
@@ -28,9 +30,11 @@ def crawler(url):
     parsed = []
     for item in items:
         print("crawling:" + url )
-        dtpattern=r'\d{4}.\d{2}.\d{2}'
+        dtpattern=r'(?P<year>\d{4}).(?P<month>\d{2}).(?P<day>\d{2})'
         data = item.find(class_= "news_row_date").getText()
-        date = re.findall(dtpattern,data)
+        d = re.search(dtpattern,data)
+        date = d.group('year') + "/" + d.group('month') + "/" + d.group('day')
+
         links = item.find_all("a", href=True)
         links = item.find_all("img", src=True)
         # article = {
@@ -76,7 +80,7 @@ def crawl(request):
         cursor.execute(sql)
         db.commit()
         print("clearing....")
-    for i in range(10):
+    for i in range(15):
         if(i == 0): 
             crawler("http://www.cpbl.com.tw/news/lists.html")
         else:
@@ -93,3 +97,27 @@ def saveMySql(parsed):
         cursor.executemany(sql, parsed)
         db.commit()
     print("....done")
+
+def graph(request):
+    if request.method =="GET":
+        print("in get")
+        data = ""
+        print("inside")
+        type = request.GET["type"]
+        if type == "pie":
+            # fetched = Articles.objects.filter(date__isnull = False).only('date').annotate(dcount=Count('date'))
+            results = Articles.objects.values('date').annotate(dcount=Count('date'))
+            obj = {}
+            obj["labels"] = []
+            obj["data"] = []
+            obj["title"] = "Count of Articles Per Day"
+            obj["axislabel"] = "# of articles"
+            for row in results:
+                obj["labels"].append(row["date"])
+                obj["data"].append(row["dcount"])
+            # print(fetched.query)
+            data = json.dumps(obj)
+            # print(fetched)
+
+        return HttpResponse(data, content_type='application/json')
+    # return 

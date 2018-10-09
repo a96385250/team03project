@@ -3,7 +3,11 @@
 {% block appcode %}
 
 <h1>Charts</h1>
-
+<select id="charts">
+    <option id="pie">Count by date</option>
+    <option id="bar">Link Click Count</option>
+</select>
+<hr>
 <canvas id="pie-chart" width="800" height="450"></canvas>
 
 {% endblock%}
