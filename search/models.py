@@ -18,7 +18,6 @@ class Articles(models.Model):
     summary = models.CharField(max_length=500, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'articles'
 
 
@@ -28,5 +27,4 @@ class Teams(models.Model):
     teamname_eng = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'teams'

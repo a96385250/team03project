@@ -43,22 +43,25 @@ $(document).ready(function(){
         return(card)
     }
 })
-    $( function() {
-        $.getJSON("/api/articles/", function(data) {
-            console.log(data)
-            list = []
-            $.each(data,function(idx,obj){
-                list.push(obj.title)
-            })
-            console.log(list)
-            $( "#query" ).autocomplete({
-                source: list,
-                minLength: 2,
-              });
+
+$( function() {
+    $.getJSON("/api/articles/", function(data) {
+        // console.log(data)
+        query = $("#query").val()
+        list = []
+        $.each(data,function(idx,obj){
+            index = obj.title.indexOf(query)
+            suggestion = obj.title.substring(index, index + 4);
+            list.push(suggestion)
+        })
+        console.log(list)
+        $( "#query" ).autocomplete({
+            source: list,
+            minLength: 2,
+            messages: {
+                noResults: '',
+                results: function() {}
+            }
             });
         });
-    // $("#searchbar").on('keyup',function(event) {
-    //     var i = event.keyCode;
-    //     console.log(i)
-        
-    // });
+    });
