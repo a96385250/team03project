@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     function teamselect(id){
         var teamselect = $("<select></select>")
         $.getJSON("/api2/teams/",function(datas){
@@ -13,7 +14,7 @@ $(document).ready(function(){
         return teamselect   
         
     }
-
+    
     function playerlist(){
         var teamoption = $("#team");
         $.getJSON("/api2/teams/",function(datas){
@@ -23,7 +24,7 @@ $(document).ready(function(){
             })
         })
 
-        $.getJSON("/api/player/?ordering=-avg",function(datas){
+        $.getJSON("/api/player/",function(datas){
             var tb = $("#todolist>tbody");
             var docFrag = $(document.createDocumentFragment());
             $.each(datas,function(index,value){                
@@ -51,72 +52,7 @@ $(document).ready(function(){
         });
     }
 
-    function webgettest(){
-        $.getJSON("/player/catch",function(datas){
-            $.each(datas,function(index,value){
-                $.post("/api/player/",value,function(data){                 
-                }) 
-                // playerjson={
-                //     "playername": value.playername,
-                //     "avg": value.avg,
-                //     "h": value.h,
-                //     "hr": value.hr,
-                //     "era": value.era,
-                //     "w": value.w,
-                //     "sv": value.sv,
-                //     "rbi": value.rbi,
-                //     "sb": value.sb,
-                //     "so": value.so,
-                //     "teamid": value.teamid
-                // }
-                // playerslist.push(playerjson)
-            })
-            // console.log(playerslist)        
-        })
-        //  console.log(playerslist)
-    }
-    function wbeposttest(datas){
-        $.each(datas,function(index,value){
-            console.log(value)
-        })
-    }
-
-    // webgettest()
     playerlist()
-    // // wbeposttest()
-   
-        $("#team").change(function(){
-            teamid = $("#team >:selected").attr("id");
-        })
-        $("#buttonSubmit").click(function(){
-            teamid=1
-            var datas={
-                "teamid":teamid,
-                "playername":$("#playername").val(),
-                "avg":$("#avg").val(),
-                "h":$("#h").val(),
-                "hr":$("#hr").val(),
-                "era":$("#era").val(),
-                "w":$("#w").val(),
-                "sv":$("#sv").val(),
-                "rbi":$("#rbi").val(),
-                "sb":$("#sb").val(),
-                "so":$("#so").val(),
-            };
-        $.post("/api/player/",datas,function(data){
-            $("#playername").val("");
-            $("#avg").val("");
-            $("#h").val("");
-            $("#hr").val("");
-            $("#era").val("");
-            $("#w").val("");
-            $("#sv").val("");
-            $("#rbi").val("");
-            $("#sb").val("");
-            $("#so").val("");
-            playerlist();
-        })
-    })
         $("#todolist>tbody").on("click","button:nth-child(1)",function(){
             var trdatas = $(this).parents("tr");
             var teamid = trdatas.find("select>:selected").attr("id");   
@@ -145,7 +81,7 @@ $(document).ready(function(){
                 "sb":sb,
                 "so":so
             };
-            console.log(datas)
+
             $.ajax({
                 'url':'/api/player/' + playerid + '/',
                 'type':'PUT',
@@ -154,6 +90,7 @@ $(document).ready(function(){
                 playerlist();
             }) 
         })
+        
         $("#todolist>tbody").on("click","button:nth-child(2)",function(){
             var playerid =$(this).parents("tr").find("td:nth-child(2)").attr("id")
             $.ajax({

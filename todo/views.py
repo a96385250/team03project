@@ -3,14 +3,15 @@ from .playermodels import Players,Teams
 from search.models import Articles
 from .serializers import PlayerSerializre,TeamsSerializreteams,ArticleSerializre
 from rest_framework import filters,viewsets, generics
-from .playermodels import Players,Teams,Members
-from .serializers import PlayerSerializre,TeamsSerializreteams,MembersSerializreteams
+from .serializers import PlayerSerializre,TeamsSerializreteams
 from rest_framework import viewsets
 
 # Create your views here.
 class PlayerViewSet(viewsets.ModelViewSet):
         queryset = Players.objects.all()
         serializer_class = PlayerSerializre
+        filter_backends = (filters.SearchFilter,filters.OrderingFilter,)
+        ordering_fields = ('avg',)
 
 class TeamsViewSet2(viewsets.ModelViewSet):
         queryset = Teams.objects.all()
