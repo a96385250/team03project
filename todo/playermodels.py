@@ -15,7 +15,7 @@ class Players(models.Model):
     avg = models.DecimalField(max_digits=3, decimal_places=3)
     h = models.IntegerField()
     hr = models.IntegerField()
-    era = models.DecimalField(max_digits=3, decimal_places=3)
+    era = models.DecimalField(max_digits=4, decimal_places=2)
     w = models.IntegerField()
     sv = models.IntegerField()
     rbi = models.IntegerField()
@@ -35,25 +35,3 @@ class Teams(models.Model):
     class Meta:
         managed = False
         db_table = 'teams'
-
-
-class Members(models.Model):
-    memberid = models.AutoField(primary_key=True)
-    membername = models.CharField(max_length=45)
-    username = models.CharField(max_length=45)
-    password = models.CharField(max_length=45)
-    email = models.CharField(max_length=45)
-    gender = models.CharField(max_length=1, blank=True, null=True)
-    teamid = models.ForeignKey(Teams, models.DO_NOTHING, db_column='teamid')
-    address = models.CharField(max_length=200, blank=True, null=True)
-    phoneno = models.CharField(max_length=45)
-    newsletter = models.CharField(max_length=45, blank=True, null=True)
-    level = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'members'
-
-
-
-

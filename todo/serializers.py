@@ -4,7 +4,6 @@ import sys
 import os
 sys.path.append(os.path.abspath('../search'))
 from search.models import Articles
-from .playermodels import Players,Teams,Members
 
 
 class PlayerSerializre(serializers.ModelSerializer):
@@ -21,8 +20,8 @@ class ArticleSerializre(serializers.ModelSerializer):
     class Meta:
         model = Articles
         fields = '__all__'
-class MembersSerializreteams(serializers.ModelSerializer):
-    class Meta:
-        model = Members
-        fields = '__all__'
+# class MembersSerializreteams(serializers.ModelSerializer):
+#     class Meta:
+#         model = Members
+#         fields = '__all__'
         

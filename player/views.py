@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core import serializers
 from .models import Players,Teams
-from .webmodels import webdatas
+from .webmodels import playersdb
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -11,7 +11,7 @@ import time
 
 
 # Create your views here.
-# webdata=webdatas()
+playersdbdata=playersdb()
 
 def player(request) :
     # players = Players.objects.all()
@@ -19,6 +19,7 @@ def player(request) :
     return HttpResponse(strJS)
 
 def catch(request):
+    playersdbdata.delete()
     teamslist = ["A02","L01","B04","E02"]
     time.sleep(2)
     for teamlist in teamslist:
@@ -42,8 +43,16 @@ def catch(request):
         playersplist = teamp.select("table.std_tb tr")
         del(playerslist[0])
         del(playersplist[0])
-        # print(playerslist)
-
+        teamid=1
+        avg=0.00
+        era=0.00
+        h=0
+        hr=0
+        w=0
+        sv=0
+        rbi=0
+        sb=0
+        so=0
         for playerdatas in playerslist:
             teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerdatas.find("a")["href"])
             teamname=teamidpatten.group("teamname")
@@ -54,10 +63,23 @@ def catch(request):
             hr = playerdatas.select("td:nth-of-type(12)")[0].get_text()
             sb = playerdatas.select("td:nth-of-type(14)")[0].get_text()
             rbi =  playerdatas.select("td:nth-of-type(6)")[0].get_text()
+            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so)
+            playersdbdata.create(playerdb)
+
+            if teamname == "A":
+                teamid = 1
+            elif teamname == "L":
+                teamid = 2
+            elif teamname == "B":
+                teamid = 3
+            elif teamname == "E":
+                teamid =4 
+              
             print(avg)
             print(ht)
             print(hr)
             print(sb)
+            print(teamid)
 
         for playerpdatas in playersplist:
             teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerpdatas.find("a")["href"])
@@ -68,91 +90,25 @@ def catch(request):
             w =  playerpdatas.select("td:nth-of-type(9)")[0].get_text()
             sv = playerpdatas.select("td:nth-of-type(11)")[0].get_text()
             so = playerpdatas.select("td:nth-of-type(24)")[0].get_text()
+            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so)
+            playersdbdata.create(playerdb)
+
+            if teamname == "A":
+                teamid = 1
+            elif teamname == "L":
+                teamid = 2
+            elif teamname == "B":
+                teamid = 3
+            elif teamname == "E":
+                teamid =4  
+
+            print(teamid)
             print(era)
             print(w)
             print(sv)
             print(so)
-
-
-    # del(playerlist[0])
-    # avg=0.00
-    # era=0.00
-    # h=0
-    # hr=0
-    # w=0
-    # sv=0
-    # rbi=0
-    # sb=0
-    # so=0
-    # teamid=0
-    # playerslist=webdata.read()
-    # print(playerslist)
-    # for playerdatas in playerlist:
-    #     teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerdatas.find("a")["href"])
-    #     teamname=teamidpatten.group("teamname")
-    #     playername = playerdatas.find("a").get_text().strip()
-    #     print(playername)
-    #     avg = playerdatas.select("td:nth-of-type(18)")[0].get_text()
-    #     ht =  playerdatas.select("td:nth-of-type(8)")[0].get_text()
-    #     hr = playerdatas.select("td:nth-of-type(12)")[0].get_text()
-    #     sb = playerdatas.select("td:nth-of-type(15)")[0].get_text()
-    #     a ="廖建富"
-    #     c =(("a"),("廖建富",),("d"))
-    #     print(type(("a")))
-    #     print(type(("a",)))
-    #     if a in c:
-    #         print("123")
-    #     if playername in playerslist:
-    #         print("ok")
-
-    #     if teamname == "A":
-    #         teamid = 1
-    #     elif teamname == "L":
-    #         teamid = 2
-    #     elif teamname == "B":
-    #         teamid = 3
-    #     elif teamname == "E":
-    #         teamid =4
-
-   
-        # webdatas=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so)
-        # webdata.create(webdatas)
-        # data={
-        #     "playername":playername,
-        #     "avg":avg,
-        #     "h":h,
-        #     "hr":hr,
-        #     "era": "0.00",
-        #     "w":0,
-        #     "sv": 0,
-        #     "rbi": 0,
-        #     "sb": sb,
-        #     "so": 0,
-        #     "teamid": teamid          
-        # }
-        # datas.append(data)
-    # del(datas[0])
-    # datajson = json.dumps(datas)
-    # print(datas)
-    # print(type(data))
-    # print(datajson)
-    # print(type(datajson))
-    # playjson = serializers.serialize("json",datas)
-    # print(playjson)
-    # return HttpResponse(playjson,content_type="application/json")
-        # print(playerdatas.find_all("td"))
-        # for playertd in playerdatas.find_all("td"):
-        #     print(playerdatas.find('td').get_text())
-
-        # a = playerdatas.findAll('td')[17:18]
-        # for b in a:
-        #     print(b.string)
-        
-        # print(playerdatas.findAll('td')[17:18])
-        # print(playerdatas.findAll('td')[7:8])
-        
-    # return render(request,'player/catch.html')
-    return render(request,'player/restapi.html') 
+    return render(request,'player/catch.html') 
+    
 def restapi(request):
     return render(request,'player/restapi.html') 
 
