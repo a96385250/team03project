@@ -39,9 +39,9 @@ def catch(request):
         team=BeautifulSoup(teams.text,"lxml")
         teamp=BeautifulSoup(teamsp.text,"lxml")
 
-        playerslist = team.select("table.std_tb tr")
+        playerslist = team.select("table.std_tb > tr")
         playersplist = teamp.select("table.std_tb > tr")
-        del(playerslist[0])
+        # del(playerslist[0])
         # del(playersplist[0])
         teamid=1
         ab=0
@@ -63,9 +63,9 @@ def catch(request):
             print(playername)
             ab =  playerdatas.select("td:nth-of-type(5)")[0].get_text()
             avg = playerdatas.select("td:nth-of-type(18)")[0].get_text()
-            ht =  playerdatas.select("td:nth-of-type(8)")[0].get_text()
+            h =  playerdatas.select("td:nth-of-type(8)")[0].get_text()
             hr = playerdatas.select("td:nth-of-type(12)")[0].get_text()
-            sb = playerdatas.select("td:nth-of-type(14)")[0].get_text()
+            sb = playerdatas.select("td:nth-of-type(15)")[0].get_text()
             rbi =  playerdatas.select("td:nth-of-type(6)")[0].get_text()
 
             if teamname == "A":
@@ -82,10 +82,17 @@ def catch(request):
               
             print(ab)  
             print(avg)
-            print(ht)
+            print(h)
             print(hr)
             print(sb)
             print(teamid)
+
+        ab=0
+        avg=0.00
+        h=0
+        hr=0
+        rbi=0
+        sb=0
 
         for playerpdatas in playersplist:
             teamidpatten=re.search(r'/(?P<patten1>\w+)/(?P<patten2>.+=)(?P<teamname>\w)\w+',playerpdatas.find("a")["href"])
@@ -123,29 +130,256 @@ def catch(request):
 def ranking(request):
     return render(request,'player/ranking.html') 
 
-def rankingdata(request):
-    avgdatas=[]
-    playersavg=playersdbdata.read()
-    for playeravg in playersavg:
-        if playeravg[0] == 1:
+def rankingavg(request):
+    datas=[]
+    datasql = "SELECT teamid,playername,avg from players where ab >345 ORDER BY avg DESC LIMIT 5"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
             playerteam = "Lamigo"
-        elif playeravg[0] == 2:
+        elif playerdata[0] == 2:
             playerteam = "統一獅"
-        elif playeravg[0] == 3:
+        elif playerdata[0] == 3:
             playerteam = "富邦悍將"
-        elif playeravg[0] == 4:
+        elif playerdata[0] == 4:
             playerteam = "中信兄弟"
-        avgdata={
+        data={
             "playerteamid":playerteam,
-            "playername":playeravg[1],
-            "playeravg":str(playeravg[2])
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
         }
-        avgdatas.append(avgdata)
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
 
-    avgdatajson = json.dumps(avgdatas)
-    return HttpResponse(avgdatajson)
+def rankingh(request):
+    datas=[]
+    datasql = "select teamid,playername,h from players  order by  h  desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
 
-    
+def rankinghr(request):
+    datas=[]
+    datasql = "select teamid,playername,hr from players  order by  hr  desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankingera(request):
+    datas=[]
+    datasql = "select teamid,playername,era from players  where era >0.00 and ip >146.1 order by era limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankingw(request):
+    datas=[]
+    datasql = "select teamid,playername,w from players order by w desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankingsv(request):
+    datas=[]
+    datasql = "select teamid,playername,sv from players order by sv desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankingrbi(request):
+    datas=[]
+    datasql = "select teamid,playername,rbi from players order by rbi desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankingsb(request):
+    datas=[]
+    datasql = "select teamid,playername,sb from players order by sb desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankingso(request):
+    datas=[]
+    datasql = "select teamid,playername,so from players order by so desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def rankinghld(request):
+    datas=[]
+    datasql = "select teamid,playername,hld from players order by hld desc limit 5;"
+    playersdata=playersdbdata.read(datasql)
+    for playerdata in  playersdata:
+        if playerdata[0] == 1:
+            playerteam = "Lamigo"
+        elif playerdata[0] == 2:
+            playerteam = "統一獅"
+        elif playerdata[0] == 3:
+            playerteam = "富邦悍將"
+        elif playerdata[0] == 4:
+            playerteam = "中信兄弟"
+        data={
+            "playerteamid":playerteam,
+            "playername":playerdata[1],
+            "playerranking":str(playerdata[2])
+        }
+        datas.append(data)
+    datajson = json.dumps(datas)
+    return HttpResponse(datajson)
+
+def chartavg(request):
+    return render(request,'player/chartavg.html')
+
+def charth(request):
+    return render(request,'player/charth.html') 
+
+def charthr(request):
+    return render(request,'player/charthr.html') 
+
+def chartera(request):
+    return render(request,'player/chartera.html') 
+
+def chartw(request):
+    return render(request,'player/chartw.html')
+
+def chartsv(request):
+    return render(request,'player/chartsv.html')
+
+def chartrbi(request):
+    return render(request,'player/chartrbi.html')
+
+def chartsb(request):
+    return render(request,'player/chartsb.html')
+
+def chartso(request):
+    return render(request,'player/chartso.html')
+
+def charthld(request):
+    return render(request,'player/charthld.html')
+
 def restapi(request):
     return render(request,'player/restapi.html') 
 

@@ -1,12 +1,13 @@
 from django.db import connection
 
 class playersdb:
-    def read(self):
+    def read(self,sqlcode):
         with connection.cursor() as cursor:
-            sql = "SELECT teamid,playername,avg from players where ab >345 ORDER BY avg DESC LIMIT 5"
+            sql = sqlcode
             cursor.execute(sql)
             playerread =  cursor.fetchall()
         return playerread
+
 
     def create(self,players):
         with connection.cursor() as cursor:
