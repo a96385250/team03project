@@ -7,6 +7,7 @@
         <table id="todolist" class="table table-editable">
             <thead>
                 <tr>
+                    <th class="text-center">排名</th>
                     <th class="text-center">球隊</th>
                     <th class="text-center">球員名字</th>                     
                     <th class="text-center">打擊率</th>
@@ -25,10 +26,11 @@
         $.get("/player/rankingdata",function(datas){
             data = JSON.parse(datas)
             $.each(data,function(index,value){
+                var number = $("<td class='text-center'></td>").text(index+1)
                 var teaname = $("<td class='text-center'></td>").text(value.playerteamid)
                 var playername = $("<td class='text-center'></td>").text(value.playername)
                 var playeravg = $("<td class='text-center'></td>").text(value.playeravg)                
-                var row = $("<tr></tr>").append([teaname,playername,playeravg])
+                var row = $("<tr></tr>").append([number,teaname,playername,playeravg])
                 docFrag.append(row)
             })
             tb.html(docFrag)

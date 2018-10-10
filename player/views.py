@@ -67,8 +67,6 @@ def catch(request):
             hr = playerdatas.select("td:nth-of-type(12)")[0].get_text()
             sb = playerdatas.select("td:nth-of-type(14)")[0].get_text()
             rbi =  playerdatas.select("td:nth-of-type(6)")[0].get_text()
-            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip)
-            playersdbdata.create(playerdb)
 
             if teamname == "A":
                 teamid = 1
@@ -78,6 +76,9 @@ def catch(request):
                 teamid = 3
             elif teamname == "E":
                 teamid =4 
+
+            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip)
+            playersdbdata.create(playerdb)
               
             print(ab)  
             print(avg)
@@ -97,8 +98,6 @@ def catch(request):
             sv = playerpdatas.select("td:nth-of-type(11)")[0].get_text()
             so = playerpdatas.select("td:nth-of-type(24)")[0].get_text()
             hld = playerpdatas.select("td:nth-of-type(13)")[0].get_text()
-            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip)
-            playersdbdata.create(playerdb)
 
             if teamname == "A":
                 teamid = 1
@@ -107,7 +106,10 @@ def catch(request):
             elif teamname == "B":
                 teamid = 3
             elif teamname == "E":
-                teamid =4
+                teamid = 4
+
+            playerdb=(playername,teamid,avg,h,hr,era,w,sv,rbi,sb,so,hld,ab,ip)
+            playersdbdata.create(playerdb)
 
             print(ip)
             print(era)
@@ -125,10 +127,18 @@ def rankingdata(request):
     avgdatas=[]
     playersavg=playersdbdata.read()
     for playeravg in playersavg:
+        if playeravg[0] == 1:
+            playerteam = "Lamigo"
+        elif playeravg[0] == 2:
+            playerteam = "統一獅"
+        elif playeravg[0] == 3:
+            playerteam = "富邦悍將"
+        elif playeravg[0] == 4:
+            playerteam = "中信兄弟"
         avgdata={
-            "playerteamid":playeravg[0],
+            "playerteamid":playerteam,
             "playername":playeravg[1],
-            "playeravg":float(playeravg[2])
+            "playeravg":str(playeravg[2])
         }
         avgdatas.append(avgdata)
 
