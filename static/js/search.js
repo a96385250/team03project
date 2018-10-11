@@ -31,9 +31,9 @@ $(document).ready(function(){
         var col4 = $('<div></div>').attr("class", "col-md-4")
         var row = $('<div></div>').attr("class", "row")
         var img = $('<img />').attr("class", "w-100").attr("src",result.imgurl)
-        var title = $('<a></a>').attr("class", "card-title").attr("href", result.url).text(result.title)
+        var title = $('<a></a>').attr("class", "card-title").attr("href", result.url).text(result.title).attr("id",result.articleid).attr("name",result.count)
         var summary = $('<p></p>').attr("class", "card-text text-justify").text(result.summary)
-        var more = $('<a></a>').attr("class", "btn btn-primary").attr("href", result.url).text("more")
+        var more = $('<a></a>').attr("class", "more btn btn-primary").attr("href", result.url).text("more").attr("id",result.articleid).attr("name",result.count)
         var cardDetail = $('<div></div>').attr("class", "card-block")
         cardDetail.append([title, summary, more])
         col8.append(cardDetail)
@@ -41,6 +41,32 @@ $(document).ready(function(){
         row.append(col4,col8)
         card.append(row)
         return(card)
+    }
+
+    $(document).on('click','.more',addCount)
+
+    $(document).on('click','.card-title',addCount)
+
+    function addCount(e) {
+        e.preventDefault()
+        id = $(this).attr("id")
+        count = parseInt($(this).attr("name")) + 1
+        $.ajax({
+            'url':'/api/articles/' + id,
+            'type':'GET',
+        }).done(function(data){
+            data.count = count
+            delete(data["articleid"])
+            console.log(data)
+         //修改資料
+            $.ajax({
+                'url':'/api/articles/'+ id+"/",
+                'type':'PUT',
+                'data':data
+            }).done(function(data){
+                console.log("added 1")
+            })
+        })
     }
 })
 
@@ -51,7 +77,7 @@ $( function() {
         list = []
         $.each(data,function(idx,obj){
             index = obj.title.indexOf(query)
-            suggestion = obj.title.substring(index, index + 4);
+            suggestion = obj.title.substring(index, index + (query.length + 3));
             list.push(suggestion)
         })
         console.log(list)
