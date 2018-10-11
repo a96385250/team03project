@@ -1,11 +1,10 @@
 from rest_framework import serializers
-from .playermodels import Players,Teams
 import sys
 import os
 sys.path.append(os.path.abspath('../search'))
 from search.models import Articles
-from .playermodels import Players,Teams,Members
-
+from .playermodels import Players,Teams
+from signin.models import Members
 
 class PlayerSerializre(serializers.ModelSerializer):
     class Meta:

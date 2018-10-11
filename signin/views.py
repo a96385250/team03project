@@ -90,11 +90,19 @@ def captcha(request):
     return response
 
 def delete(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        
+        a = Members.objects.filter(username=username,password=password)
+        print(a)
+        a.delete()
+
     return render(request,'delete.html',locals())  
 
 def revise(request):
     if 'memberid' not in request.COOKIES:
-        strJS = "<script>alert('購物前，請先登入');location.href='signin/'</script>"
+        strJS = "<script>alert('購物前，請先登入');location.href='../registered/'</script>"
         return HttpResponse(strJS)
 
 
@@ -104,7 +112,7 @@ def revise(request):
         memberid = request.COOKIES["memberid"]
         teamid = request.POST["teamid"]
         username = request.POST["username"]
-        phoneno = request.POST["phoneno"]  #w124@gmail.com
+        phoneno = request.POST["phoneno"] 
         password = request.POST["password"]  
         address = request.POST["address"] 
         Members.objects.filter(memberid=memberid).update(teamid=Teams.objects.get(teamid=teamid),password=password,phoneno=phoneno,username=username,address=address)

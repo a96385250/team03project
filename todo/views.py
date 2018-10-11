@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from .playermodels import Players,Teams
 from search.models import Articles
-from .serializers import PlayerSerializre,TeamsSerializreteams,ArticleSerializre
 from rest_framework import filters,viewsets, generics
-from .playermodels import Players,Teams,Members
-from .serializers import PlayerSerializre,TeamsSerializreteams,MembersSerializreteams
+from signin.models import Members
+from .serializers import PlayerSerializre,TeamsSerializreteams,MembersSerializreteams,ArticleSerializre
 from rest_framework import viewsets
 
 # Create your views here.

@@ -37,22 +37,6 @@ class Teams(models.Model):
         db_table = 'teams'
 
 
-class Members(models.Model):
-    memberid = models.AutoField(primary_key=True)
-    membername = models.CharField(max_length=45)
-    username = models.CharField(max_length=45)
-    password = models.CharField(max_length=45)
-    email = models.CharField(max_length=45)
-    gender = models.CharField(max_length=1, blank=True, null=True)
-    teamid = models.ForeignKey(Teams, models.DO_NOTHING, db_column='teamid')
-    address = models.CharField(max_length=200, blank=True, null=True)
-    phoneno = models.CharField(max_length=45)
-    newsletter = models.CharField(max_length=45, blank=True, null=True)
-    level = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'members'
 
 
 

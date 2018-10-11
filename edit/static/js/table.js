@@ -1,10 +1,6 @@
 $(document).ready(function(){
-<<<<<<< HEAD
-    function callbackFuncWithData(datas){
-=======
     var teams
      function callbackFuncWithData(datas){
->>>>>>> 24133c5440afecfdb0317495792ce71a2d1e4052
         teams = datas;
     }
 
@@ -44,20 +40,6 @@ $(document).ready(function(){
     loadSearch()
  
     $('#tblList>tbody').on('click','button:nth-child(1)',function(){
-<<<<<<< HEAD
-        var id = $(this).parents('tr').find('td:nth-child(1)').text()
-       //刪除資料
-           $.ajax({
-               'url':'/api/articles/' + id + '/',
-               'type':'DELETE'
-           }).done(function(data){
-                loadSearch()
-           })
-   })
-
-   $('#tblList>tbody').on('click','button:nth-child(2)',function(){
-        var id = $(this).parents('tr').find('td:nth-child(1)').text()
-=======
         var id = $(this).parents('tr').find('td:nth-child(1)').text()
     //刪除資料
         $.ajax({
@@ -127,7 +109,6 @@ $(document).ready(function(){
     })
     
     $(document).on('click','.upload',function(){
->>>>>>> 24133c5440afecfdb0317495792ce71a2d1e4052
         var teamid = $(this).parents('tr').find('select>:selected').attr("id")
         var title = $(this).parents('tr').find('td:nth-child(3)').text()
         var url = $(this).parents('tr').find('td:nth-child(4)').text()
@@ -135,21 +116,6 @@ $(document).ready(function(){
         var date = $(this).parents('tr').find('td:nth-child(6)').text()
         var summary = $(this).parents('tr').find('td:nth-child(7)').text()
         var datas = {
-<<<<<<< HEAD
-            "id": id,
-            "title": title,
-            "url": url,
-            "date": date,
-            "team": team,
-            "type": type
-        }
-
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: "/edit/supdate/",
-            data: datas,
-=======
             "teamid": teamid,
             "title": title,
             "url": url,
@@ -176,13 +142,7 @@ $(document).ready(function(){
            console.log("done crawling")
            loadSearch()
 
->>>>>>> 24133c5440afecfdb0317495792ce71a2d1e4052
         })
     })
-<<<<<<< HEAD
-})
-
-=======
     
 })
->>>>>>> 24133c5440afecfdb0317495792ce71a2d1e4052
