@@ -38,12 +38,3 @@ class Teams(models.Model):
     class Meta:
         managed = False
         db_table = 'teams'
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
->>>>>>> ced8a058fc8ebc71742fc3541a35b2ea06942f90
