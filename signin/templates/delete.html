@@ -1,1 +1,15 @@
 {% extends "app.html" %}
+{% block appcode %}
+<form action="">
+    {% csrf_token %}
+    <div class="container login">
+        <input type="email" class="form-control" name="username" id="username" placeholder="刪除帳號">
+    </div>
+    <div class="container login">
+            <input type="password" class="form-control" name="password" id="password" placeholder="密碼">
+        </div>
+    <span>
+        <button type="submit" class="form-control" >送出</button>
+    </span>
+</form>
+{% endblock %} 

@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from .playermodels import Players,Teams
 from search.models import Articles
-from .serializers import PlayerSerializre,TeamsSerializreteams,ArticleSerializre
 from rest_framework import filters,viewsets, generics
-from .serializers import PlayerSerializre,TeamsSerializreteams
+from signin.models import Members
+from .serializers import PlayerSerializre,TeamsSerializreteams,MembersSerializreteams,ArticleSerializre
 from rest_framework import viewsets
 
 # Create your views here.
@@ -24,6 +24,6 @@ class ArticlesViewSet2(viewsets.ModelViewSet):
         search_fields = ('title',)
         ordering_fields = ('date',)
 
-# class MembersViewSet(viewsets.ModelViewSet):
-#         queryset = Members.objects.all()
-#         serializer_class = MembersSerializreteams
+class MembersViewSet(viewsets.ModelViewSet):
+        queryset = Members.objects.all()
+        serializer_class = MembersSerializreteams
