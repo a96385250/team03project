@@ -2,14 +2,20 @@ from django.shortcuts import render
 from .playermodels import Players,Teams
 from search.models import Articles
 from rest_framework import filters,viewsets, generics
+<<<<<<< HEAD
 from signin.models import Members
 from .serializers import PlayerSerializre,TeamsSerializreteams,MembersSerializreteams,ArticleSerializre
+=======
+from .serializers import PlayerSerializre,TeamsSerializreteams
+>>>>>>> ced8a058fc8ebc71742fc3541a35b2ea06942f90
 from rest_framework import viewsets
 
 # Create your views here.
 class PlayerViewSet(viewsets.ModelViewSet):
         queryset = Players.objects.all()
         serializer_class = PlayerSerializre
+        filter_backends = (filters.SearchFilter,filters.OrderingFilter,)
+        ordering_fields = ('avg',)
 
 class TeamsViewSet2(viewsets.ModelViewSet):
         queryset = Teams.objects.all()
@@ -18,8 +24,10 @@ class TeamsViewSet2(viewsets.ModelViewSet):
 class ArticlesViewSet2(viewsets.ModelViewSet):
         queryset = Articles.objects.all()
         serializer_class = ArticleSerializre
-        filter_backends = (filters.SearchFilter,)
+        filter_backends = (filters.SearchFilter,filters.OrderingFilter)
         search_fields = ('title',)
-class MembersViewSet(viewsets.ModelViewSet):
-        queryset = Members.objects.all()
-        serializer_class = MembersSerializreteams
+        ordering_fields = ('date',)
+
+# class MembersViewSet(viewsets.ModelViewSet):
+#         queryset = Members.objects.all()
+#         serializer_class = MembersSerializreteams

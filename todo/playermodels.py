@@ -15,12 +15,15 @@ class Players(models.Model):
     avg = models.DecimalField(max_digits=3, decimal_places=3)
     h = models.IntegerField()
     hr = models.IntegerField()
-    era = models.DecimalField(max_digits=3, decimal_places=3)
+    era = models.DecimalField(max_digits=4, decimal_places=2)
     w = models.IntegerField()
     sv = models.IntegerField()
     rbi = models.IntegerField()
     sb = models.IntegerField()
     so = models.IntegerField()
+    hld = models.IntegerField()
+    ab = models.IntegerField()
+    ip = models.DecimalField(max_digits=4, decimal_places=1)
 
     class Meta:
         managed = False
@@ -35,9 +38,12 @@ class Teams(models.Model):
     class Meta:
         managed = False
         db_table = 'teams'
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> ced8a058fc8ebc71742fc3541a35b2ea06942f90
