@@ -31,17 +31,20 @@ $(document).ready(function(){
                 var selects = teamselect(value.teamid)
                 var options=$("<td class='text-center'></td>").append(selects)
                 var cell1 = $("<td class='text-center'></td>").text(value.playername).attr({'id':value.playerid,'contenteditable':'true'});
-                var cell2 = $("<td class='text-center'></td>").text(value.avg).attr('contenteditable','true');
-                var cell3 = $("<td class='text-center'></td>").text(value.h).attr('contenteditable','true');
-                var cell4 = $("<td class='text-center'></td>").text(value.hr).attr('contenteditable','true');
-                var cell5 = $("<td class='text-center'></td>").text(value.era).attr('contenteditable','true');
-                var cell6 = $("<td class='text-center'></td>").text(value.w).attr('contenteditable','true');
-                var cell7 = $("<td class='text-center'></td>").text(value.sv).attr('contenteditable','true');
-                var cell8 = $("<td class='text-center'></td>").text(value.rbi).attr('contenteditable','true');
-                var cell9 = $("<td class='text-center'></td>").text(value.sb).attr('contenteditable','true');
-                var cell10 = $("<td class='text-center'></td>").text(value.so).attr('contenteditable','true');
+                var cell2 = $("<td class='text-center'></td>").text(value.ab).attr('contenteditable','true');
+                var cell3 = $("<td class='text-center'></td>").text(value.ip).attr('contenteditable','true');
+                var cell4 = $("<td class='text-center'></td>").text(value.avg).attr('contenteditable','true');
+                var cell5 = $("<td class='text-center'></td>").text(value.h).attr('contenteditable','true');
+                var cell6 = $("<td class='text-center'></td>").text(value.hr).attr('contenteditable','true');
+                var cell7 = $("<td class='text-center'></td>").text(value.era).attr('contenteditable','true');
+                var cell8 = $("<td class='text-center'></td>").text(value.w).attr('contenteditable','true');
+                var cell9 = $("<td class='text-center'></td>").text(value.sv).attr('contenteditable','true');
+                var cell10 = $("<td class='text-center'></td>").text(value.rbi).attr('contenteditable','true');
+                var cell11 = $("<td class='text-center'></td>").text(value.sb).attr('contenteditable','true');
+                var cell12 = $("<td class='text-center'></td>").text(value.so).attr('contenteditable','true');
+                var cell13 = $("<td class='text-center'></td>").text(value.hld).attr('contenteditable','true');
                 var but1 = $("<td class='text-center'></td>").html('<button><i class="fas fa-edit"></i></button><button><i class="fas fa-trash-alt"></i></button>');
-                var row = $("<tr></tr>").append([options,cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9,cell10,but1]);
+                var row = $("<tr></tr>").append([options,cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9,cell10,cell11,cell12,cell13,but1]);
                 docFrag.append(row);
             });
             tb.html(docFrag);
