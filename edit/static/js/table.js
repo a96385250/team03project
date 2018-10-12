@@ -29,8 +29,9 @@ $(document).ready(function(){
                 var cell5 = $('<td></td>').text(article.imgurl).attr('contenteditable','true')
                 var cell6= $('<td></td>').text(article.date).attr('contenteditable','true')
                 var cell7= $('<td></td>').text(article.summary).attr('contenteditable','true')
-                var cell8 = $('<td></td>').html('<button class="btn btn-danger"><i class="far fa-trash-alt"></i></button><button class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>')
-                var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8])
+                var cell8= $('<td></td>').text(article.count).attr('contenteditable','true')
+                var cell9 = $('<td></td>').html('<button class="btn btn-danger"><i class="far fa-trash-alt"></i></button><button class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>')
+                var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9])
                 docFrag.append(row)
             })
             tb.html(docFrag)
@@ -58,6 +59,7 @@ $(document).ready(function(){
          var imgurl = $(this).parents('tr').find('td:nth-child(5)').text()
         var date = $(this).parents('tr').find('td:nth-child(6)').text()
         var summary = $(this).parents('tr').find('td:nth-child(7)').text()
+        var count = $(this).parents('tr').find('td:nth-child(8)').text()
         var datas = {
             "teamid": teamid,
             "title": title,
@@ -65,6 +67,7 @@ $(document).ready(function(){
             "imgurl": imgurl,
             "date":date,
             "summary":summary,
+            "count":count,
         };
          //修改資料
      $.ajax({
@@ -84,6 +87,7 @@ $(document).ready(function(){
             "imgurl":"",
             "date":"",
             "summary":"", 
+            "count":0
         };
         var tb =  $('#tblList');
         var docFrag = $(document.createDocumentFragment())
@@ -102,8 +106,9 @@ $(document).ready(function(){
         var cell5 = $('<td></td>').text(article.imgurl).attr('contenteditable','true')
         var cell6= $('<td></td>').text(article.date).attr('contenteditable','true')
         var cell7= $('<td></td>').text(article.summary).attr('contenteditable','true')
-        var cell8 = $('<td></td>').html('<button class="btn btn-danger"  disabled><i class="far fa-trash-alt"></i></button><button class="btn btn-primary" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i></button><button class="btn btn-success upload"><i class="fa fa-upload" aria-hidden="true"></i></button>')
-        var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8])
+        var cell8= $('<td></td>').text(article.count).attr('contenteditable','true')
+        var cell9 = $('<td></td>').html('<button class="btn btn-danger"  disabled><i class="far fa-trash-alt"></i></button><button class="btn btn-primary" disabled><i class="fa fa-paper-plane" aria-hidden="true"></i></button><button class="btn btn-success upload"><i class="fa fa-upload" aria-hidden="true"></i></button>')
+        var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6,cell7,cell8,cell9])
         docFrag.append(row)
         tb.append(docFrag)
     })
@@ -115,6 +120,7 @@ $(document).ready(function(){
         var imgurl = $(this).parents('tr').find('td:nth-child(5)').text()
         var date = $(this).parents('tr').find('td:nth-child(6)').text()
         var summary = $(this).parents('tr').find('td:nth-child(7)').text()
+        var count = $(this).parents('tr').find('td:nth-child(8)').text()
         var datas = {
             "teamid": teamid,
             "title": title,
@@ -122,6 +128,7 @@ $(document).ready(function(){
             "imgurl": imgurl,
             "date":date,
             "summary":summary,
+            "count":count
         };
         $.ajax({
             'url':'/api/articles/',
@@ -143,7 +150,6 @@ $(document).ready(function(){
            loadSearch()
 
         })
-        
     })
     
 })

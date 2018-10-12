@@ -3,87 +3,91 @@
 {% block css %}
 {% endblock %}
 {% block appcode %}
-<div class="row col-md-9 ">
-    <div class="col-md-9">
-       <table id="todolist" class="table table-editable">
-         <thead>
-            <tr>
-                <th class="text-center">球隊</th>
-                <th class="text-center">球員名字</th>
-                <th class="text-center">打擊率</th>
-                <th class="text-center">安打數</th>
-                <th class="text-center">全壘打</th>
-                <th class="text-center">防禦率</th>
-                <th class="text-center">勝投</th>
-                <th class="text-center">救援成功</th>
-                <th class="text-center">打點</th>
-                <th class="text-center">盜壘成功</th>
-                <th class="text-center">奪三振</th>
-                <th class="text-center">編輯</th>
-            </tr>
-         </thead>
-         <tbody>
-         </tbody>
-       </table>
-    </div>
-    <div class="col-md-3">
-     <form>
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="exampleInputselect">球隊</label>
-            <select id="team" name="teamid" class="form-control" >
-            </select>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-10">
+            <table id="todolist" class="table table-editable">
+                <thead>
+                    <tr>
+                        <th class="text-center">球隊</th>
+                        <th class="text-center">球員名字</th>
+                        <th class="text-center">打擊數</th>
+                        <th class="text-center">局數</th>
+                        <th class="text-center">打擊率</th>
+                        <th class="text-center">安打數</th>
+                        <th class="text-center">全壘打</th>
+                        <th class="text-center">防禦率</th>
+                        <th class="text-center">勝投</th>
+                        <th class="text-center">救援成功</th>
+                        <th class="text-center">打點</th>
+                        <th class="text-center">盜壘成功</th>
+                        <th class="text-center">奪三振</th>
+                        <th class="text-center">中繼點</th>
+                        <th class="text-center">編輯</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
-        <div class="form-group">
-            <label for="InputTitle">球員</label>
-            <input type="text" class="form-control" id="playername" placeholder="球員姓名">         
-        </div>
-        <div class="form-group">
-            <label for="InputText">打擊率</label>
-            <input type="text" class="form-control" id="avg" placeholder="打擊率">
-        </div>
-        <div class="form-group">
-            <label for="InputText">安打數</label>
-            <input type="text" class="form-control" id="h" placeholder="安打數">
-        </div>
-        <div class="form-group">
-            <label for="InputText">全壘打</label>
-            <input type="text" class="form-control" id="hr" placeholder="全壘打">
-        </div>
-        <div class="form-group">
-            <label for="InputText">防禦率</label>
-            <input type="text" class="form-control" id="era" placeholder="防禦率">
-        </div>
-        <div class="form-group">
-            <label for="InputText">勝投</label>
-            <input type="text" class="form-control" id="w" placeholder="勝投">
-        </div> 
-        <div class="form-group">
-            <label for="InputText">救援成功</label>
-            <input type="text" class="form-control" id="sv" placeholder="救援成功">
-        </div>
-        <div class="form-group">
-            <label for="InputText">打點</label>
-            <input type="text" class="form-control" id="rbi" placeholder="打點">
-        </div>
-        <div class="form-group">
-            <label for="InputText">盜壘成功</label>
-            <input type="text" class="form-control" id="sb" placeholder="盜壘成功">
-        </div>
-        <div class="form-group">
-            <label for="InputText">奪三振</label>
-            <input type="text" class="form-control" id="so" placeholder="奪三振">
-        </div>
+        <div class="col col-lg-2">
+            <form>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputselect">球隊</label>
+                    <select id="team" name="teamid" class="form-control" >
+                    </select>   
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="InputTitle">球員</label>
+                    <input type="text" class="form-control" id="playername" placeholder="球員姓名">         
+                </div>
+                <div class="form-group">
+                    <label for="InputText">打擊率</label>
+                    <input type="text" class="form-control" id="avg" placeholder="打擊率">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">安打數</label>
+                    <input type="text" class="form-control" id="h" placeholder="安打數">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">全壘打</label>
+                    <input type="text" class="form-control" id="hr" placeholder="全壘打">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">防禦率</label>
+                    <input type="text" class="form-control" id="era" placeholder="防禦率">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">勝投</label>
+                    <input type="text" class="form-control" id="w" placeholder="勝投">
+                </div> 
+                <div class="form-group">
+                    <label for="InputText">救援成功</label>
+                    <input type="text" class="form-control" id="sv" placeholder="救援成功">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">打點</label>
+                    <input type="text" class="form-control" id="rbi" placeholder="打點">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">盜壘成功</label>
+                    <input type="text" class="form-control" id="sb" placeholder="盜壘成功">
+                </div>
+                <div class="form-group">
+                    <label for="InputText">奪三振</label>
+                    <input type="text" class="form-control" id="so" placeholder="奪三振">
+                </div>
                                                  
-        <button type="button" id="buttonSubmit" class="btn btn-primary">Submit</button>
-     </form>
-    </div>
+            <button type="button" id="buttonSubmit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
 </div>
 {% endblock %}
 {% block script %}
 <script>
  $.getScript("{% static 'restapi.js' %}",function(){
- })       
+})       
 </script>
 {% endblock %}

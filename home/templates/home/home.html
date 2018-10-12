@@ -89,53 +89,16 @@
         <h4 class="card-header ">前五場戰績</h4>
         <a href="#"><img class="card-img-top" src="{% static 'images/baseball1.jpeg' %}" alt=""></a>
         <div class="card-body">
-            <a href="#" style="margin-right: 3px">一軍</a> <a href="#">二軍</a>
-            <table class=" card-text table table-hover">
+            <table id=game class=" card-text table table-hover">
                 <thead>
                   <tr>
-                      <th scope="col">場次</th>
-                      <th scope="col">日期</th>
-                      <th scope="col">對戰組合</th>
-                      <th scope="col">比數</th>
-                      <th scope="col">勝隊</th>
+                      <th scope="col" class='text-center'>日期</th>
+                      <th scope="col" class='text-center'>對戰組合</th>
+                      <th scope="col" class='text-center'>比數</th>
+                      <th scope="col" class='text-center'>勝隊</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                      <th scope="row">197</th>
-                      <td>2018/9/1</td>
-                      <td><img src ="{% static 'images/333.png' %}"> VS <img src ="{% static 'images/111.png' %}" ></td>
-                      <td>4:5</td>
-                      <td><img src ="{% static 'images/111.png' %}"></td>
-                  </tr>
-                  <tr>
-                      <th scope="row">198</th>
-                      <td>2018/9/1</td>
-                      <td><img src ="{% static 'images/444.png' %}"> VS <img src ="{% static 'images/222.png' %}" ></td>
-                      <td>1:10</td>
-                      <td><img src ="{% static 'images/222.png' %}"></td>
-                  </tr>
-                  <tr>
-                      <th scope="row">199</th>
-                      <td>2018/9/2</td>
-                      <td><img src ="{% static 'images/333.png' %}"> VS <img src ="{% static 'images/111.png' %}" ></td>
-                      <td>11:2</td>
-                      <td><img src ="{% static 'images/333.png' %}"></td>
-                  </tr>
-                  <tr>
-                      <th scope="row">200</th>
-                      <td>2018/9/2</td>
-                      <td><img src ="{% static 'images/444.png' %}"> VS <img src ="{% static 'images/222.png' %}" ></td>
-                      <td>5:13</td>
-                      <td><img src ="{% static 'images/222.png' %}"></td>
-                  </tr>
-                  <tr>
-                      <th scope="row">201</th>
-                      <td>2018/9/3</td>
-                      <td><img src ="{% static 'images/444.png' %}"> VS <img src ="{% static 'images/111.png' %}" ></td>
-                      <td>6:2</td>
-                      <td><img src ="{% static 'images/444.png' %}"></td>
-                  </tr>
                 </tbody>
               </table>
           </div>
@@ -279,4 +242,28 @@
 </div>
 {% endblock %}
 {% block script %}
+<script>
+  $(document).ready(function(){
+    var game= $("#game>tbody")
+    var docFrag = $(document.createDocumentFragment());
+
+    $.get("../game",function(datas){
+      console.log(datas)
+        var data = JSON.parse(datas)
+        
+        $.each(data,function(index,value){
+            teamstr=String(value.team1)
+            var cell1=$("<td class='text-center'></td>").text("2018年"+value.date)
+            var cell2=$("<td class='text-center'></td>").html("<img src="+value.team1+">"+" " +"VS"+" " +"<img src="+value.team2+">" )
+            var cell3=$("<td class='text-center'></td>").text(value.team1game+":"+value.team2game)
+            var cell4=$("<td class='text-center'></td>").html("<img src="+value.teamwinname+">")
+            var row= $("<tr></tr>").append([cell1,cell2,cell3,cell4])
+            docFrag.append(row)
+            console.log(teamstr)
+        })
+        game.html(docFrag)    
+    })
+
+})
+</script>
 {% endblock %}
