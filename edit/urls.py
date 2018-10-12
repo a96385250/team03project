@@ -22,4 +22,11 @@ urlpatterns = [
     path('searchapi/',views.search,name="searchapi"),
     path('searchstats/',views.stats,name="searchstats"),
     path("person",views.person,name="person"),
+    path('act/',views.actcheck,name='act'),
+    path('act/',views.actcreate,name="actcreate"),
+    
+    path('actprint/',views.actindex,name="actindex"),
+
+    path('actdelete/<int:id>',views.actdelete,name="actdelete"),
+    path('actupdate/<int:id>', views.actupdate, name="actupdate"),
 ]

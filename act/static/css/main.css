@@ -1,0 +1,90 @@
+.carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .carouselcolor{
+    background: gray;
+  }
+
+  .carousel img {
+    widows: 10% ; 
+    height:100%
+    }
+
+  .portfolio-item {
+    margin-bottom: 30px;
+  }
+  
+  .inputdate{
+    margin-bottom: 20px;
+  }
+
+  .main{
+    margin-bottom: 50px
+  }
+
+  .icon{
+    font-size: 18px;
+  }
+  .iconfooter{
+    font-size: 30px;
+  }
+
+  #extrapadding {
+    padding-top: 50px;
+  }
+
+  table{
+    display:block
+  }
+
+  .card {
+    border-radius:0;
+    margin:10px auto;
+}
+.card-title {
+	text-transform: uppercase;
+	color: #E44424;
+}
+
+.card-text {
+	margin-top:10px;
+	margin-bottom: 10px;
+	background-color:#FFFFFF;
+	color:#000000;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ui-autocomplete {
+  max-height: 100px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+  background-color:white;
+  z-index: 2147483647;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+* html .ui-autocomplete {
+  height: 100px;
+}
+
+.ui-tooltip {
+  background: #4a4a4a;
+  color: #96f226;
+  border: 2px solid #454545;
+  border-radius: 0px;
+  box-shadow: 0 0
+}

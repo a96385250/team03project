@@ -6,7 +6,12 @@ from django.http import HttpResponse
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
+<<<<<<< HEAD
+from act.models import Actmember
+from act.models import Location
+=======
 import pymysql
+>>>>>>> 30731376f61c9d9279f72a366ca83245bee64db4
 
 
 def search(request): 
@@ -194,7 +199,73 @@ def testencoding(request):
 def person(request):
     return render(request,'personnelManagement/index.html',locals())
 
+<<<<<<< HEAD
+# ==
+def actindex(request):     
+    title = "會員資料"
+    actmember = Actmember.objects.all()
+    return render(request,'act/edit_printout.html',locals())
+
+
+def actdelete(request, id):
+    id = Actmember.objects.get(id = id)
+    id.delete()
+    # return redirect("/act/print/")
+    return redirect("/edit/actprint/")
+    # return render(request,'act/edit_printout.html',locals())
+
+def actupdate(request, id):
+    
+    if request.method == "POST":
+        #接收表單傳過來的資料
+        actname = request.POST["actname"]
+        name = request.POST["name"]
+        email = request.POST["email"]  #w124@gmail.com
+        password = request.POST["password"]  
+        age = request.POST["age"] 
+        
+        Actmember.objects.filter(id=id).update(actname=actname,name=name,email=email,password=password,age=age)
+        #轉到會員的首頁上
+        # return redirect("/act/print/")
+        return redirect("/edit/actprint/")
+    id = Actmember.objects.get(id=id)
+    l=Location.objects.all()
+    return render(request,'act/edit_update.html',locals())
+    
+def actcheck(request):
+    if request.method == "POST" :
+        actname = request.POST["actname"]
+        name = request.POST["name"]
+        password = request.POST["password"]
+        age = request.POST["age"]
+        email = request.POST['email']
+        #將資料寫進資料庫
+        Actmember.objects.create(actname=actname,name=name,password=password,age=age,email=email)
+        # return redirect('/act/')
+    l=Location.objects.all()
+    return render(request,'act/actedit.html',locals())
+
+
+def actcreate(request):  
+    title="新增"
+    
+    if request.method == "POST" :
+        actname = request.POST["actname"]
+        name = request.POST["name"]
+        password = request.POST["password"]
+        age = request.POST["age"]
+        email = request.POST['email']
+
+        #將資料寫進資料庫
+        
+        Actmember.objects.create(id=id,actname=actname,name=name,password=password,age=age,email=email)
+        # return redirect('/act/')
+    return render(request,'act/edit_printout.html',locals())
+   
+
+=======
 # def person(request):
     
 #     return render(request,'personnelManagement/index.html',locals())
+>>>>>>> 30731376f61c9d9279f72a366ca83245bee64db4
 
