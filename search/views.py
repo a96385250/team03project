@@ -81,7 +81,7 @@ def crawl(request):
             crawler("http://www.cpbl.com.tw/news/lists.html")
         else:
             crawler("http://www.cpbl.com.tw/news/lists/news_lits.html?year=0&month=0&search=&tag=&per_page={}".format(i))
-
+    
     
 def saveMySql(parsed):
     print("saving.......")
