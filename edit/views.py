@@ -8,7 +8,6 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
 import pymysql
 
-
 def search(request): 
     title = "Restfual api"
     return render(request,'search/api.html',locals())
@@ -192,9 +191,17 @@ def testencoding(request):
     response.set_cookie("u2",u2)
     return response
 def person(request):
+    # db = pymysql.connect("/api3/Member/","root","root","member")
+    # cursor = db.cursor()
+    # sql = "select * from teamid"
+    
     return render(request,'personnelManagement/index.html',locals())
 
 # def person(request):
     
 #     return render(request,'personnelManagement/index.html',locals())
+
+
+
+
 
