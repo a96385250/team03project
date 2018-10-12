@@ -106,6 +106,7 @@ def crawl(request):
         else:
             crawler("http://www.cpbl.com.tw/news/lists/news_lits.html?year=0&month=0&search=&tag=&per_page={}".format(i))
     
+    
 def saveMySql(parsed):
     print("saving.......")
     print(parsed)
@@ -116,6 +117,38 @@ def saveMySql(parsed):
         cursor.executemany(sql, parsed)
         db.commit()
     print("....done")
+
+def crawlRank(request):
+    time.sleep(2)
+    count = 0
+    obj = {}
+    for i in range(3):
+        url = "http://www.cpbl.com.tw/standing/season/2018.html?&year=2018&season={}".format(i)
+        headers_data = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers_data)
+        wins = BeautifulSoup(response.text,'lxml')
+        obj[count] = {}
+        tables = wins.findAll("table")[0:1]
+        inside = 0
+        for row in tables[0].findAll("tr")[1:5]:
+            data = row.find_all("td")
+            obj[count][inside] = {}
+            obj[count][inside]["rks"] = data[0].getText().strip()
+            obj[count][inside]["team"] = data[1].getText().strip()
+            dtpattern=r'(?P<wins>\d{2})-(?P<tie>\d{1})-(?P<loss>\d{2})'
+            d = re.search(dtpattern,data[3].getText().strip())
+            obj[count][inside]["w"] = d.group('wins')
+            obj[count][inside]["l"] = d.group('loss')
+            obj[count][inside]["t"] = d.group('tie')
+            obj[count][inside]["PCT"] = data[4].getText().strip()
+            obj[count][inside]["GB"] = data[5].getText().strip()
+            inside+=1
+        count+=1
+    data = json.dumps(obj)
+    print(data)
+    return HttpResponse(data, content_type='application/json')
 
 def graph(request):
     if request.method =="GET":

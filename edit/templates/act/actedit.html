@@ -1,0 +1,117 @@
+{% extends "edit.html" %}
+{% load static %}
+{% block css %}
+<style>
+    .block {
+        margin:3PX 2PX;
+        width:380PX;
+        height:300PX;
+      /* ===   */
+      /* width: 380PX;             */
+        display: block;
+        cursor: pointer;
+        /* margin-bottom: 50px             */
+    }
+
+    .none {
+        display: none;
+    }
+
+    .field {
+        width:380PX;            
+        margin: 0 auto;            
+        border-radius: 20PX;
+    }
+
+    .legend {
+        text-align: center;
+        font-size: larger
+    }
+    .ads{
+        margin:3PX 2PX;
+        width:60PX;
+        height:60PX;
+    }
+    .adsborder{  
+        margin:3PX 2PX;
+        width:60PX;
+        height:60PX;          
+        border:3px solid #ffc300;
+    }
+    .pdiv{
+        width:380PX;
+        text-align: center;            
+    }
+    .control {
+        margin-left: 30px;
+        margin-right: 30px;
+        width: 40px;
+        -webkit-filter: grayscale(1);
+    }
+</style>
+{% endblock %}
+{% block appcode %}
+
+
+  <!-- <div class="container">
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h2>活動</h2>
+      <p class="lead">活動頁面測試中....</p>
+    </div>
+<div> -->
+
+
+  <!-- ================ -->
+  <div>
+      <form method="POST" >
+        {% csrf_token %}
+        <div class="form-group row">
+          <label for="select1" class="col-sm-2 col-form-label">活動項目</label>
+          <div class="col-sm-10">
+              <select id="select1" name="actname"" class="form-control">
+                {% for locations in l %}     
+                <option value="{{locations.location_name}}">{{locations.location_name}}</option>
+                <!-- 　<option value="{{category.categoryid}}">{{category.categoryname}}</option> -->
+                {% endfor %}　
+              </select>
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputnumber" class="col-sm-2 col-form-label">姓名</label>
+            <div class="col-sm-10">
+             <input type="text" class="form-control" id="inputnumber" placeholder="輸入姓名" name="name">
+            </div>
+          </div>
+        <div class="form-group row">
+            <label for="inputname"" class="col-sm-2 col-form-label">會員編碼</label>
+            <div class="col-sm-10">
+             <input type="text" class="form-control" id="inputname" placeholder="輸入編碼" name="password">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputprice" class="col-sm-2 col-form-label">年紀</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputprice" placeholder="輸入年紀" name="age">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="file1" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="file1" placeholder="輸入信箱" name="email">
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary"><i class="fab fa-angellist"></i>送出</button>
+            </div>
+          </div>
+      </form>
+    </div>
+{% endblock %}
+{% block script %}
+<script src="../../static/JS/Lab04.js"></script>
+
+  
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "edit.html" %}
+{% block styles %}
+<style>
+    .thumb{
+        width:100px;
+    }
+    </style>
+{% endblock %}
+{% block appcode %}
+
+    <table class="table">
+       <thead>
+           <tr>
+               <th>活動項目</th>
+               <th>姓名</th>
+               <th>活動編碼</th>
+               <th>年紀</th>
+               <th>Email</th>
+               <th>編輯</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for member in actmember%}
+           <tr>
+               <td>{{ member.actname }}</td>
+               <td>{{ member.name }}</td>
+               <td>{{ member.password }}</td>
+               <td>{{ member.age }}</td>
+               <td>{{ member.email }}</td>
+               <td>
+                <td>
+                    <a href="{% url "admin:actdelete" member.id %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url "admin:actupdate" member.id %}" class="btn btn-secondary"><i class="fas fa-user-edit"></i></a>
+            </td>
+               
+               
+           </tr>
+           {% endfor %}
+       </tbody>
+    </table>
+{% endblock%}
+
+{% block scripts%}
+{% endblock%}
+
