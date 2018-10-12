@@ -65,7 +65,7 @@ def registered(request):
                 Members.objects.create(teamid=Teams.objects.get(teamid=teamid),email=email,password=password,newsletter=newsletter,phoneno=phoneno,username=username,membername=membername,address=address)
                 return redirect("/")
             else:
-                return HttpResponse("<script>alert('驗證碼錯誤，請重新輸入');location.href='/signin/registered/'</script>")
+                return HttpResponse("<script>alert('驗證碼錯誤，請重新輸入');location.href='signin/'</script>")
             
     return render(request,'registered.html',locals())
     
