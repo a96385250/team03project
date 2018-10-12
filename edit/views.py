@@ -9,7 +9,6 @@ from django.utils.encoding import smart_str
 from act.models import Actmember
 from act.models import Location
 
-
 def search(request): 
     title = "Restfual api"
     return render(request,'search/api.html',locals())
@@ -193,6 +192,10 @@ def testencoding(request):
     response.set_cookie("u2",u2)
     return response
 def person(request):
+    # db = pymysql.connect("/api3/Member/","root","root","member")
+    # cursor = db.cursor()
+    # sql = "select * from teamid"
+    
     return render(request,'personnelManagement/index.html',locals())
 
 # ==
@@ -257,5 +260,9 @@ def actcreate(request):
         # return redirect('/act/')
     return render(request,'act/edit_printout.html',locals())
    
+
+
+
+
 
 
