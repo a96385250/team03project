@@ -12,6 +12,7 @@ class PlayerViewSet(viewsets.ModelViewSet):
         serializer_class = PlayerSerializre
         filter_backends = (filters.SearchFilter,filters.OrderingFilter,)
         ordering_fields = ('avg',)
+        search_fields = ('playername',)
 
 class TeamsViewSet2(viewsets.ModelViewSet):
         queryset = Teams.objects.all()

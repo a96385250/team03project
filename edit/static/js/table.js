@@ -152,5 +152,18 @@ $(document).ready(function(){
         })
         
     })
+
+    $(document).on('click','#crawlRank',function(){
+        console.log("started crawling")
+        $.ajax({
+            'url':'/search/crawlRank/',
+            'type':'GET',
+        }).done(function(data){
+           console.log("done crawling Rank")
+           loadSearch()
+
+        })
+        
+    })
     
 })
