@@ -6,12 +6,8 @@ from django.http import HttpResponse
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
-<<<<<<< HEAD
 from act.models import Actmember
 from act.models import Location
-=======
-import pymysql
->>>>>>> 30731376f61c9d9279f72a366ca83245bee64db4
 
 
 def search(request): 
@@ -199,7 +195,6 @@ def testencoding(request):
 def person(request):
     return render(request,'personnelManagement/index.html',locals())
 
-<<<<<<< HEAD
 # ==
 def actindex(request):     
     title = "會員資料"
@@ -263,9 +258,4 @@ def actcreate(request):
     return render(request,'act/edit_printout.html',locals())
    
 
-=======
-# def person(request):
-    
-#     return render(request,'personnelManagement/index.html',locals())
->>>>>>> 30731376f61c9d9279f72a366ca83245bee64db4
 
