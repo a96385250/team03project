@@ -11,8 +11,7 @@ def signin(request):
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
-        # captcha = request.POST["captcha"]
-        # if request.session['captcha'] == captcha:
+
         theMember = Members.objects.filter(email=email,password=password).values('memberid')
 
         if theMember:
@@ -40,11 +39,9 @@ def signin(request):
             return response
         else:
             # print("登入失敗")
-            #return HttpResponse("<h2>登入失敗</h2>")
+            # return HttpResponse("<h2>登入失敗</h2>")
             return HttpResponse("<script>alert('登入失敗');location.href='/'</script>")
-    # else:
-    #      return HttpResponse("<script>alert('驗證碼錯誤，請重新輸入');location.href='signin/'</script>")
-
+  
     # print(email, password, remember)
 
 
@@ -52,18 +49,24 @@ def signin(request):
     return render(request,'signin.html',locals())
 
 def registered(request):
+
     if  request.method == "POST": 
-        teamid = request.POST["teamid"]
-        email = request.POST["email"]
-        password = request.POST["password"]
-        newsletter = request.POST["newsletter"] 
-        phoneno = request.POST["phoneno"]
-        username = request.POST["username"]
-        membername = request.POST["membername"]
-        address = request.POST["address"]
-        
-        Members.objects.create(teamid=Teams.objects.get(teamid=teamid),email=email,password=password,newsletter=newsletter,phoneno=phoneno,username=username,membername=membername,address=address)
-        return redirect("/")
+            captcha = request.POST["captcha"]
+            teamid = request.POST["teamid"]
+            email = request.POST["email"]
+            password = request.POST["password"]
+            newsletter = request.POST["newsletter"] 
+            phoneno = request.POST["phoneno"]
+            username = request.POST["username"]
+            membername = request.POST["membername"]
+            address = request.POST["address"]
+
+            if request.session['captcha'] == captcha:
+                Members.objects.create(teamid=Teams.objects.get(teamid=teamid),email=email,password=password,newsletter=newsletter,phoneno=phoneno,username=username,membername=membername,address=address)
+                return redirect("/")
+            else:
+                return HttpResponse("<script>alert('驗證碼錯誤，請重新輸入');location.href='/signin/registered/'</script>")
+            
     return render(request,'registered.html',locals())
     
 def captcha(request):    
@@ -81,7 +84,7 @@ def captcha(request):
     height = 30
     image = Image.new('RGB', (width, height), (255, 255, 255))    
     # 下載字體https://fonts.google.com/
-    thefont = finders.find('fonts/Kavivanar-Regular.ttf')
+    thefont = finders.find('../static/fonts/Kavivanar-Regular.ttf')
     font = ImageFont.truetype(thefont, 16)   
     draw = ImageDraw.Draw(image)
     draw.text((5, 5), txt,font=font, fill=(255, 0, 0))

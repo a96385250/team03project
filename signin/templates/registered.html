@@ -106,7 +106,7 @@
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa fa-venus fa-lg" aria-hidden="true"></i></span>
                                 <input type="text" name="captcha" id="captcha" placeholder="驗證碼"  class="form-control">
-                                <img id="img_captcha" src="/member/captcha">
+                                <img id="img_captcha" src="/member/captcha/">
                                 <button id="btn_captcha" type="button">
                                   <i class="fas fa-redo-alt"></i>
                                 </button>
@@ -213,7 +213,11 @@
 
 <script>
         $('#btn_captcha').click(function () {
-          var xhr = new XMLHttpRequest();
+            getCaptcha()
+        })
+        getCaptcha()
+        function getCaptcha() {
+            var xhr = new XMLHttpRequest();
           xhr.open("GET", "/signin/captcha");
           xhr.responseType = "arraybuffer";
           xhr.addEventListener("load",function(event) {
@@ -222,6 +226,6 @@
             $('#img_captcha').attr('src',imageUrl)
           });
           xhr.send();    
-        })
+        }
       </script> 
 {% endblock %}

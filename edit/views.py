@@ -6,13 +6,8 @@ from django.http import HttpResponse
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
-<<<<<<< HEAD
 from act.models import Actmember
 from act.models import Location
-=======
-import pymysql
->>>>>>> 30731376f61c9d9279f72a366ca83245bee64db4
-
 
 def search(request): 
     title = "Restfual api"
@@ -197,6 +192,10 @@ def testencoding(request):
     response.set_cookie("u2",u2)
     return response
 def person(request):
+    # db = pymysql.connect("/api3/Member/","root","root","member")
+    # cursor = db.cursor()
+    # sql = "select * from teamid"
+    
     return render(request,'personnelManagement/index.html',locals())
 
 # ==
@@ -262,4 +261,11 @@ def actcreate(request):
     return render(request,'act/edit_printout.html',locals())
    
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> cd2cd6a73be7cf35ff0202dc043d98702baa1d6b
 
