@@ -108,7 +108,7 @@ $(document).ready(function(){
     $(document).on('click','.card-title',addCount)
 
     function addCount(e) {
-        e.preventDefault()
+
         id = $(this).attr("id")
         count = parseInt($(this).attr("name")) + 1
         $.ajax({
