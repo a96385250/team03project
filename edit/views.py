@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from store.models import Productcat,Products,Teams
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import smart_str
+import pymysql
 
 
 def search(request): 
@@ -192,4 +193,8 @@ def testencoding(request):
     return response
 def person(request):
     return render(request,'personnelManagement/index.html',locals())
+
+# def person(request):
+    
+#     return render(request,'personnelManagement/index.html',locals())
 

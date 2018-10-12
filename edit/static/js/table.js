@@ -150,7 +150,6 @@ $(document).ready(function(){
            loadSearch()
 
         })
-        
     })
 
     $(document).on('click','#crawlRank',function(){

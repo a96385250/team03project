@@ -4,7 +4,7 @@
   {% csrf_token %}
 <div>
   <label for="select2" >隊伍</label>
-  <div>
+  <div style="padding-right:1350px">
     <select id="select2" name="teamid" class="form-control">
       {% for teams in teams %} 
       <option  {% if teams.teamid == products.teamid.teamid %} selected {% endif %}>{{teams.teamname}}</option>                       
@@ -12,7 +12,7 @@
     </select>
   </div>
 </div>
-<div>
+<div style="padding-right:1350px">
   <label for="select1" >分類</label>
   <div>
     <select id="select1" name="categoryid" class="form-control" value="{{productcat.categoryname}}">
@@ -25,13 +25,13 @@
 <div>
   <label for="inputName">名稱</label>
     <div>
-      <input type="text" id="inputName" value="{{products.productname}}" name="productname">
+      <input type="text" id="inputName" value="{{products.productname}}" name="productname" size="37">
     </div>
   </div>
   <div >
     <label for="inputUnitcost" >價格</label>
     <div>
-      <input type="text" id="inputUnitcost" value="{{products.price}}" name="price">
+      <input type="text" id="inputUnitcost" value="{{products.price}}" name="price" size="37">
     </div>
   </div>
   <div>

@@ -5,40 +5,128 @@
     font-size:24px;
 }
 .cartst1{
-    float:right;
-    margin:300px 300px 0px 0px;
-    background:white;
+    background:rgb(246, 242, 217);
     font-size:24px;
-    display:none
+    display:none;
+    position:fixed
 }
 .cartst2{
-    float:right;
-    margin:300px 300px 0px 0px;
-    background:white;
-    font-size:24px
+    margin:150px 0px 0px 1250px;
+    background:rgb(246, 242, 217);
+    font-size:24px;
+    position:fixed
 }
-
+.black_overlay{ 
+    display: none; 
+    position:absolute; 
+    top:0%; 
+    left:0%; 
+    width:100%; 
+    height:100%; 
+    background-color:black; 
+    z-index:1001; 
+    -moz-opacity:0.8; 
+    opacity:.80; 
+    filter:alpha(opacity=88);
+    position:fixed
+} 
+.white_content { 
+    display:none; 
+    position:absolute; 
+    top:15%; 
+    left:25%; 
+    width:55%; 
+    height:75%; 
+    padding:20px; 
+    border:10px solid orange; 
+    background-color:white; 
+    z-index:1002; 
+    overflow:auto;
+    position:fixed
+} 
 </style>
 {% endblock %}
 {% block appcode %}
-<div id="div1" style="background-color:rgb(246, 242, 217)">
+<div id="div1" style="background-color:white">
     <div style="float:left;margin:50px 0px 0px 300px;">
-        <ul style="border:2px solid khaki;padding:0px 80px 20px 10px;background-color:rgb(255, 255, 169);list-style-type:none;color:black;">
-            <li style="font-size:20px;padding:0px 0px 20px 60px;font-weight:800">選單</li>
+        <ul style="border:2px solid khaki;padding:0px 60px 20px 45px;background-color:rgb(255, 255, 169);list-style-type:none;color:black;position:fixed">
+            <li style="font-size:30px;padding:0px 0px 20px 20px;font-weight:800">選單</li>
             {% for teams in teams %}
-            <li><a href="{% url "store:category" teams.teamid %}">{{teams.teamname}}</a></li>
+            <li style="font-size:20px"><a href="{% url "store:category" teams.teamid %}">{{teams.teamname}}</a></li>
             {% endfor %}
-            <li><a href="/store">全部</a></li>
+            <li style="font-size:20px"><a href="/store">全部</a></li>
         </ul>
+        <div id="light" class="white_content">
+            <table style="font-size:24px">
+                <tr>
+                    <td><hr>顧客服務
+                        <br>如果您對於購買職棒商城商品有任何問題歡迎來信商店街
+                        <br>信箱albert.chou@cpbl.com.tw
+                        <br>商品部：02-2577-6992分機519、612
+                        <br>傳真電話：02-2577-2606致中華職棒商店街，謝謝您。
+                        <br>客服服務時間為週一至週五
+                    </td>
+                </tr>
+                <tr>
+                    <td><hr>運費部份
+                        <br>1.只要您消費滿額達1,000元，即不收取任何運費，未滿1,000元，將收取100元運費，
+                        敬請見諒。
+                        <br>   
+                        <br>2.利用劃撥方式購物的消費者，敬請配合，如未滿1,000元，請加上100元運費，謝謝合作。
+                    </td>
+                </tr>
+                <tr>
+                    <td><hr>中華職棒紀念商品可透過哪些管道購買?!
+                        <br>線上購物：shop.cpbl.com.tw，提供您線上刷卡、ATM轉帳的服務
+                        <br>郵政劃撥：
+                        <br>戶名：中華職業棒球大聯盟　　帳號：50330806
+                        <br>
+                        <br>公司地址：台北市松山區八德路三段32號2樓
+                        <br>週一至週五
+                        <br>上午 9：30~12：00
+                        <br>下午 13：30~18：00
+                        <br>(建議您可先來信albert.chou@cpbl.com.tw 告知我們您所需要的商品，以利我們事先確認商品存量，進而節省您寶貴的時間。)
+                    </td>
+                </tr>
+                <tr>
+                    <td><hr>訂單取消之作業
+                        <br>繳款方式：
+                        <br>1.ATM匯款：
+                        <br>訂單之後，PChome會給您一組供匯款使用的虛擬帳號，只要您在通知 
+                        <br>信的期限內不去匯款，訂單將會自動取消，請您不用擔心逾期匯款會
+                        <br>對您的評價有任何影響。
+                        <br>
+                        <br>2.信用卡刷卡：
+                        <br>訂單之後，假如您要退單，可自行申請或請來電通知我們，我們會立即幫您取消訂
+                        <br>單作業服務。
+                        <br>服務專線：02-2577-6992#612
+                    </td>
+                </tr>
+                <tr>
+                    <td><hr>運費部份
+                        <br>親愛的消費者您好：
+                        <br>本商城消費額滿1,000元即免運費，如果未達1,000元，則加收100元運費，謝謝您的光臨。
+                    </td>
+                </td>
+            </table> 
+            <p style="font-size:24px;padding-top:30px"><a href = "javascript:void(0)" onclick = "closeDialog()">同意全部並關閉視窗</a></p>
+        </div> 
+        <div id="fade" class="black_overlay"></div>
     </div>
+    <p style="font-size:48px;margin:500px 0px 0px 150px;padding:10px 25px;border:2px solid rgb(208, 255, 147);background-color:rgb(218, 245, 179);position:fixed"><a href = "JavaScript:void(0)" onclick = "openDialog()" style="color:rgb(236, 57, 33)">購物須知</a></p>
     <table id="cart" class="cartst1">
         <tr>
             <th>數量</th><th>商品名稱</th>
         </tr>
     </table>
+    <div style="background-color: wheat;margin:45px 850px 0px 600px;border:2px solid white"></div>
     {% for products in products %}
-    <div style="background-color: wheat;margin:65px 850px 0px 600px;border:2px solid black">
-        <img src="/media/{{products.image}}" title="{{products.productdesc}}" width="200" style="margin:10px">
+    <div style="background-color: wheat;margin:25px 850px 0px 600px;border:2px solid black">
+        {% if products.image|length > 20 %}
+        <img src="{{products.image}}" width="200" style="margin:10px">
+        {% else %}
+        <img src="/media/{{products.image}}" width="200" style="margin:10px">
+        {% endif %} 
         <input type="button" value="加入清單" name="{{products.productname}}" id="{{products.productid}}" style="float:right;margin:90px 40px 0px 0px;border-radius:12px;border:none;width:30%;cursor:pointer;background-color:rgb(245, 243, 159)">
     </div>
     <div style="background-color: wheat;margin:0px 850px 10px 600px;border:2px solid black">
@@ -66,7 +154,16 @@
 </div>
 {% endblock %}
 {% block script %}
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 <script>
+    function openDialog(){
+        document.getElementById('light').style.display='block';
+        document.getElementById('fade').style.display='block'
+    }
+    function closeDialog(){
+        document.getElementById('light').style.display='none';
+        document.getElementById('fade').style.display='none'
+    }
     $(document).ready(function() {
         idbox=[]
         Array.prototype.remove = function(val){
@@ -88,7 +185,7 @@
                     }
 				})
                 if(exist==-1){
-                    $('#cart').append("<tr id="+id+"><td><input type='text' size='1' maxlength='2' value=1></td><td><a href='#' class='st1'>"+name+"</a></td></tr>")
+                    $('#cart').append("<tr id="+id+"><td><input type='text' size='1' maxlength='2' value=1></td><td><a href='javascript:void(0)' class='st1'>"+name+"</a></td></tr>")
                     idbox.push(id)
                     rows = document.getElementById("cart").rows.length
                     if(rows>=2){

@@ -154,7 +154,7 @@ def rankingavg(request):
 
 def rankingh(request):
     datas=[]
-    datasql = "select teamid,playername,h from players  order by  h  desc limit 5;"
+    datasql = "select teamid,playername,h from players order by h desc,ab limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
@@ -176,7 +176,7 @@ def rankingh(request):
 
 def rankinghr(request):
     datas=[]
-    datasql = "select teamid,playername,hr from players  order by  hr  desc limit 5;"
+    datasql = "select teamid,playername,hr from players order by hr desc,ab limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
@@ -220,7 +220,7 @@ def rankingera(request):
 
 def rankingw(request):
     datas=[]
-    datasql = "select teamid,playername,w from players order by w desc limit 5;"
+    datasql = "select teamid,playername,w from players order by w desc,ip desc limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
@@ -264,7 +264,7 @@ def rankingsv(request):
 
 def rankingrbi(request):
     datas=[]
-    datasql = "select teamid,playername,rbi from players order by rbi desc limit 5;"
+    datasql = "select teamid,playername,rbi from players order by rbi desc,ab limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
@@ -308,7 +308,7 @@ def rankingsb(request):
 
 def rankingso(request):
     datas=[]
-    datasql = "select teamid,playername,so from players order by so desc limit 5;"
+    datasql = "select teamid,playername,so from players order by so desc,ip limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
@@ -330,7 +330,7 @@ def rankingso(request):
 
 def rankinghld(request):
     datas=[]
-    datasql = "select teamid,playername,hld from players order by hld desc limit 5;"
+    datasql = "select teamid,playername,hld from players order by hld desc,ip limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
