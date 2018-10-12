@@ -261,11 +261,3 @@ def actcreate(request):
     return render(request,'act/edit_printout.html',locals())
    
 
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> cd2cd6a73be7cf35ff0202dc043d98702baa1d6b
-
