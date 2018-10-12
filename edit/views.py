@@ -199,7 +199,6 @@ def testencoding(request):
 def person(request):
     return render(request,'personnelManagement/index.html',locals())
 
-<<<<<<< HEAD
 # ==
 def actindex(request):     
     title = "會員資料"
@@ -263,9 +262,4 @@ def actcreate(request):
     return render(request,'act/edit_printout.html',locals())
    
 
-=======
-# def person(request):
-    
-#     return render(request,'personnelManagement/index.html',locals())
->>>>>>> 30731376f61c9d9279f72a366ca83245bee64db4
 
