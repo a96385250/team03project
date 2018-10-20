@@ -79,8 +79,11 @@ def aien0313crte(request):
         rbi = request.POST["rbi"]
         sb = request.POST["sb"]
         so = request.POST["so"]
+        hld = request.POST["hld"]
+        ab = request.POST["ab"]
+        ip = request.POST["ip"]
 
-        Players.objects.create(teamid=tem.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so)
+        Players.objects.create(teamid=tem.objects.get(teamid=teamid),playername=playername,avg=avg,h=h,hr=hr,era=era,w=w,sv=sv,rbi=rbi,sb=sb,so=so,hld=hld,ab=ab,ip=ip)
         return redirect('../playerlist/')
 
 
@@ -104,6 +107,9 @@ def aien0313upd(request,id):
         rbi = request.POST["rbi"]
         sb = request.POST["sb"]
         so = request.POST["so"]
+        hld = request.POST["hld"]
+        ab = request.POST["ab"]
+        ip = request.POST["ip"]
 
         playerupdate.playername=playername
         playerupdate.teamid=teamsid
@@ -116,6 +122,9 @@ def aien0313upd(request,id):
         playerupdate.rbi=rbi
         playerupdate.sb=sb
         playerupdate.so=so
+        playerupdate.hld=hld
+        playerupdate.ab=ab
+        playerupdate.ip=ip
 
         playerupdate.save()  
         return redirect('../playerlist/')

@@ -23,7 +23,7 @@ $(document).ready(function(){
             })
         })
 
-        $.getJSON("/api/player/?ordering=-avg",function(datas){
+        $.getJSON("/api/player/",function(datas){
             var tb = $("#todolist>tbody");
             var docFrag = $(document.createDocumentFragment());
             $.each(datas,function(index,value){                
@@ -50,46 +50,12 @@ $(document).ready(function(){
             
         });
     }
-
-    function webgettest(){
-        $.getJSON("/player/catch",function(datas){
-            $.each(datas,function(index,value){
-                $.post("/api/player/",value,function(data){                 
-                }) 
-                // playerjson={
-                //     "playername": value.playername,
-                //     "avg": value.avg,
-                //     "h": value.h,
-                //     "hr": value.hr,
-                //     "era": value.era,
-                //     "w": value.w,
-                //     "sv": value.sv,
-                //     "rbi": value.rbi,
-                //     "sb": value.sb,
-                //     "so": value.so,
-                //     "teamid": value.teamid
-                // }
-                // playerslist.push(playerjson)
-            })
-            // console.log(playerslist)        
-        })
-        //  console.log(playerslist)
-    }
-    function wbeposttest(datas){
-        $.each(datas,function(index,value){
-            console.log(value)
-        })
-    }
-
-    // webgettest()
     playerlist()
-    // // wbeposttest()
    
-        $("#team").change(function(){
-            teamid = $("#team >:selected").attr("id");
+        $("#teamform").change(function(){
+            teamid = $("#teamform >:selected").attr("id");
         })
         $("#buttonSubmit").click(function(){
-            teamid=1
             var datas={
                 "teamid":teamid,
                 "playername":$("#playername").val(),
@@ -102,8 +68,12 @@ $(document).ready(function(){
                 "rbi":$("#rbi").val(),
                 "sb":$("#sb").val(),
                 "so":$("#so").val(),
+                "hld":$("#hld").val(),
+                "ab":$("#ab").val(),
+                "ip":$("#ip").val(),
+                
             };
-        $.post("/api/player/",datas,function(data){
+        $.post("/api/player/",datas,function(){
             $("#playername").val("");
             $("#avg").val("");
             $("#h").val("");
@@ -114,6 +84,9 @@ $(document).ready(function(){
             $("#rbi").val("");
             $("#sb").val("");
             $("#so").val("");
+            $("#hld").val("");
+            $("#ab").val("");
+            $("#ip").val("");
             playerlist();
         })
     })
@@ -122,16 +95,18 @@ $(document).ready(function(){
             var teamid = trdatas.find("select>:selected").attr("id");   
             var playerid = trdatas.find("td:nth-child(2)").attr("id");
             var playername = trdatas.find("td:nth-child(2)").text();
-            var avg = trdatas.find("td:nth-child(3)").text(); 
-            var h = trdatas.find("td:nth-child(4)").text(); 
-            var hr = trdatas.find("td:nth-child(5)").text(); 
-            var era = trdatas.find("td:nth-child(6)").text(); 
-            var w = trdatas.find("td:nth-child(7)").text(); 
-            var sv = trdatas.find("td:nth-child(8)").text(); 
-            var rbi = trdatas.find("td:nth-child(9)").text(); 
-            var sb = trdatas.find("td:nth-child(10)").text(); 
-            var so = trdatas.find("td:nth-child(11)").text();
-
+            var avg = trdatas.find("td:nth-child(5)").text(); 
+            var h = trdatas.find("td:nth-child(6)").text(); 
+            var hr = trdatas.find("td:nth-child(7)").text(); 
+            var era = trdatas.find("td:nth-child(8)").text(); 
+            var w = trdatas.find("td:nth-child(9)").text(); 
+            var sv = trdatas.find("td:nth-child(10)").text(); 
+            var rbi = trdatas.find("td:nth-child(11)").text(); 
+            var sb = trdatas.find("td:nth-child(12)").text(); 
+            var so = trdatas.find("td:nth-child(13)").text();
+            var hld = trdatas.find("td:nth-child(14)").text();
+            var ab = trdatas.find("td:nth-child(3)").text();
+            var ip = trdatas.find("td:nth-child(4)").text();
             var datas = {
                 "teamid":teamid,
                 "playername":playername,
@@ -143,21 +118,23 @@ $(document).ready(function(){
                 "sv":sv,
                 "rbi":rbi,
                 "sb":sb,
-                "so":so
+                "so":so,
+                "hld":hld,
+                "ab":ab,
+                "ip":ip
             };
-            console.log(datas)
             $.ajax({
-                'url':'/api/player/' + playerid + '/',
+                'url':'/api/player/'+playerid+'/',
                 'type':'PUT',
                 'data':datas
-            }).done(function(data){
+            }).done(function(){
                 playerlist();
             }) 
         })
         $("#todolist>tbody").on("click","button:nth-child(2)",function(){
             var playerid =$(this).parents("tr").find("td:nth-child(2)").attr("id")
             $.ajax({
-                'url':'/api/player/' + playerid + '/',
+                'url':'/api/player/'+playerid+'/',
                 'type':'DELETE'
             }).done(function(data){
                 playerlist();
