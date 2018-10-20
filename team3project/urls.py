@@ -42,5 +42,6 @@ urlpatterns = [
     path('api2/',include(Teamsrouter.urls)),
     path('api/',include(Articlesrouter.urls)),
     path('api3/',include(Membersrouter.urls)),
+    path('act/',include('act.urls'))
 
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

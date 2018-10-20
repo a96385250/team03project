@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'store',
     'search',
     'player',
+    'act',
     'todo',
     "rest_framework"
 
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'yamidb',
         'USER':'root',
-        'PASSWORD':'yen810327',
+        'PASSWORD':'root',
         'HOST':'localhost'
     }
 }

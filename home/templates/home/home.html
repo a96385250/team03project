@@ -15,28 +15,28 @@
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div class="carousel-item active" style="background-image: url('{% static 'images/1.png' %}')">
             <div class="carousel-caption d-none d-md-block">
-              <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
+              <h3></h3>
+              <p></p>
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url('{% static 'images/2.png' %}')">
             <div class="carousel-caption d-none d-md-block">
-              <h3>Second Slide</h3>
-              <p>This is a description for the second slide.</p>
+              <h3></h3>
+              <p></p>
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url('{% static 'images/3.png' %}')">
             <div class="carousel-caption d-none d-md-block">
-              <h3>Third Slide</h3>
-              <p>This is a description for the third slide.</p>
+              <h3></h3>
+              <p></p>
             </div>
           </div>
           <div class="carousel-item" style="background-image: url('{% static 'images/4.png' %}')">
             <div class="carousel-caption d-none d-md-block">
-              <h3>Fourth Slide</h3>
-              <p>This is a description for the third slide.</p>
+              <h3></h3>
+              <p></p>
             </div>
           </div>
         </div>
@@ -115,8 +115,8 @@
         <h4 class="card-header">戰績排名</h4>
         <a href="#"><img class="card-img-top" src="{% static 'images/baseball2.jpeg' %}" alt=""></a>
         <div class="card-body">
-            <div></div><a href="#" style="margin-right: 5px">年度排名</a><a href="#" style="margin-right: 5px">上半季</a><a href="#">下半季</a>
-            <table class="table table-hover">
+            <div></div><a id="all" href="#" style="margin-right: 5px">年度排名</a><a id="first" href="#" style="margin-right: 5px">上半季</a><a id="last" href="#">下半季</a>
+            <table class="table table-hover" id='rank'>
                 <thead>
                     <th scope="col">Team</th>
                     <th scope="col">w</th>
@@ -126,45 +126,14 @@
                     <th scope="col">GB</th>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"><img src ="{% static 'images/1111.png' %}"></th>
-                    <td>19</td>
-                    <td>17</td>
-                    <td>1</td>
-                    <td>0.528</td>
-                    <td>_</td>
-                  </tr>
-                  <tr>
-                      <th scope="row"><img src ="{% static 'images/4444.png' %}"></th>
-                      <td>19</td>
-                      <td>17</td>
-                      <td>1</td>
-                      <td>0.528</td>
-                      <td>_</td>
-                  </tr>
-                  <tr>
-                      <th scope="row"><img src ="{% static 'images/2222.png' %}"></th>
-                      <td>17</td>
-                      <td>17</td>
-                      <td>0</td>
-                      <td>0.500</td>
-                      <td>1.0</td>
-                  </tr>
-                  <tr>
-                      <th scope="row"><img src ="{% static 'images/333.png' %}"></th>
-                      <td>17</td>
-                      <td>21</td>
-                      <td>0</td>
-                      <td>0.447</td>
-                      <td>3.0</td>
-                  </tr>
+                  
                 </tbody>
               </table>
         </div>
 <!--  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   -->
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">More..</a>
-        </div>
+            <a href="http://www.cpbl.com.tw/standing/season/2018.html?&year=2018&season=0" class="btn btn-primary">More..</a>
+          </div>
       </div>
     </div><div class="col-lg-3 col-sm-6">
       <div class="card h-60">
@@ -243,27 +212,8 @@
 {% endblock %}
 {% block script %}
 <script>
-  $(document).ready(function(){
-    var game= $("#game>tbody")
-    var docFrag = $(document.createDocumentFragment());
-
-    $.get("../game",function(datas){
-      console.log(datas)
-        var data = JSON.parse(datas)
-        
-        $.each(data,function(index,value){
-            teamstr=String(value.team1)
-            var cell1=$("<td class='text-center'></td>").text("2018年"+value.date)
-            var cell2=$("<td class='text-center'></td>").html("<img src="+value.team1+">"+" " +"VS"+" " +"<img src="+value.team2+">" )
-            var cell3=$("<td class='text-center'></td>").text(value.team1game+":"+value.team2game)
-            var cell4=$("<td class='text-center'></td>").html("<img src="+value.teamwinname+">")
-            var row= $("<tr></tr>").append([cell1,cell2,cell3,cell4])
-            docFrag.append(row)
-            console.log(teamstr)
-        })
-        game.html(docFrag)    
-    })
-
-})
+  $.getScript("{% static 'js/rank.js' %}", function(j){})
 </script>
+
+
 {% endblock %}
