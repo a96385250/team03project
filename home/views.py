@@ -93,3 +93,62 @@ def game(request):
 
     # print(datas)
     # return render(request,'home/home.html')
+
+def cpblranking(request):
+    cpblrankinglist=[]
+    time.sleep(2)
+    url="http://www.cpbl.com.tw/"
+    headers={
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+    }
+    cpblrankingdatas = requests.get(url,headers=headers)
+    cpblrankingdata = BeautifulSoup(cpblrankingdatas.text,"lxml")
+
+    cpblrankings = cpblrankingdata.select("div#standing_01 table")
+    cpblrankingimg =  cpblrankings[0].find_all("img")
+    cpblranking =  cpblrankings[0].find_all("tr")
+    
+    cpblrankingteam = re.search(r'/(?P<data>\w\d+)',cpblrankingimg[0]["src"])
+    cpblrankingteamfinal = cpblrankingteam.group("data")
+    print(type(cpblranking[1].get_text()))
+
+    rankingdatas = re.search(r'(?P<data2>\d+)\s+(?P<data3>\d+)\s+(?P<data4>\d+)\s+(?P<data5>\w+.\d+)',cpblranking[1].get_text())
+    rankingdata1 = rankingdatas.group("data2")
+    rankingdata2 = rankingdatas.group("data3")
+    rankingdata3 = rankingdatas.group("data4")
+    rankingdata4 = rankingdatas.group("data5")
+    
+    print(rankingdata1,rankingdata2,rankingdata3,rankingdata4)
+
+    for index,val in enumerate(cpblrankingimg):
+        cpblrankingteam = re.search(r'/(?P<data>\w\d+)',cpblrankingimg[index]["src"])
+        team = cpblrankingteam.group("data")
+        rankingdatas = re.search(r'(?P<W>\d+)\s+(?P<L>\d+)\s+(?P<D>\d+)\s+(?P<WR>\w+.\d+)\s+(?P<GB>.+)',cpblranking[index+1].get_text())
+        W = rankingdatas.group("W")
+        L = rankingdatas.group("L")
+        D = rankingdatas.group("D")
+        WR = rankingdatas.group("WR")
+        GB = rankingdatas.group("GB")
+
+        if team == "L01":
+            team = "/static/images/111.png"
+        elif team == "A02":
+            team = "/static/images/222.png"
+        elif team == "B04":
+            team = "/static/images/333.png"
+        elif team == "E02":
+            team = "/static/images/444.png"
+
+        cpblrankingdata={
+            "team" : team,
+            "W" : W,
+            "L" : L,
+            "D" : D,
+            "WR": WR,
+            "GB": GB
+        }
+        cpblrankinglist.append(cpblrankingdata)
+
+    cpblrankingdatajson = json.dumps(cpblrankinglist)
+
+    return HttpResponse(cpblrankingdatajson)
