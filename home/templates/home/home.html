@@ -212,8 +212,7 @@
 {% endblock %}
 {% block script %}
 <script>
-  $.getScript("{% static 'js/rank.js' %}", function(j){})
+  $.getScript("{% static 'js/rank.js' %}", function(){
+  })
 </script>
-
-
 {% endblock %}
