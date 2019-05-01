@@ -132,7 +132,7 @@ def ranking(request):
 
 def rankingavg(request):
     datas=[]
-    datasql = "SELECT teamid,playername,avg from players where ab >345 ORDER BY avg DESC LIMIT 5"
+    datasql = "SELECT teamid,playername,avg from players where ab >69 ORDER BY avg DESC LIMIT 5"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
@@ -198,7 +198,7 @@ def rankinghr(request):
 
 def rankingera(request):
     datas=[]
-    datasql = "select teamid,playername,era from players  where era >0.00 and ip >146.1 order by era limit 5;"
+    datasql = "select teamid,playername,era from players  where era >0.00 and ip >25.1 order by era limit 5;"
     playersdata=playersdbdata.read(datasql)
     for playerdata in  playersdata:
         if playerdata[0] == 1:
