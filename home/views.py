@@ -107,18 +107,6 @@ def cpblranking(request):
     cpblrankings = cpblrankingdata.select("div#standing_01 table")
     cpblrankingimg =  cpblrankings[0].find_all("img")
     cpblranking =  cpblrankings[0].find_all("tr")
-    
-    cpblrankingteam = re.search(r'/(?P<data>\w\d+)',cpblrankingimg[0]["src"])
-    cpblrankingteamfinal = cpblrankingteam.group("data")
-    print(type(cpblranking[1].get_text()))
-
-    rankingdatas = re.search(r'(?P<data2>\d+)\s+(?P<data3>\d+)\s+(?P<data4>\d+)\s+(?P<data5>\w+.\d+)',cpblranking[1].get_text())
-    rankingdata1 = rankingdatas.group("data2")
-    rankingdata2 = rankingdatas.group("data3")
-    rankingdata3 = rankingdatas.group("data4")
-    rankingdata4 = rankingdatas.group("data5")
-    
-    print(rankingdata1,rankingdata2,rankingdata3,rankingdata4)
 
     for index,val in enumerate(cpblrankingimg):
         cpblrankingteam = re.search(r'/(?P<data>\w\d+)',cpblrankingimg[index]["src"])
