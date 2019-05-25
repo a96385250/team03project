@@ -15,7 +15,7 @@ class Players(models.Model):
     avg = models.DecimalField(max_digits=3, decimal_places=3)
     h = models.IntegerField()
     hr = models.IntegerField()
-    era = models.DecimalField(max_digits=4, decimal_places=2)
+    era = models.DecimalField(max_digits=5, decimal_places=2)
     w = models.IntegerField()
     sv = models.IntegerField()
     rbi = models.IntegerField()
