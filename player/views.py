@@ -26,7 +26,7 @@ def catch(request):
 
         url="http://www.cpbl.com.tw/web/team_playergrade.php"
         url2="http://www.cpbl.com.tw/web/team_playergrade.php?&grade=2"
-    
+        
         url_params={
             "team":teamlist
         }

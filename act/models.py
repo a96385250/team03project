@@ -106,13 +106,13 @@ class Location(models.Model):
 #         db_table = 'players'
 
 
-# class Productcat(models.Model):
+# class (models.Model):
 #     categoryid = models.AutoField(primary_key=True)
 #     categoryname = models.CharField(max_length=45)
 
 #     class Meta:
 #         managed = False
-#         db_table = 'productcat'
+#         db_table = ''
 
 
 # class Products(models.Model):
@@ -121,7 +121,7 @@ class Location(models.Model):
 #     productdesc = models.CharField(max_length=200, blank=True, null=True)
 #     price = models.IntegerField()
 #     image = models.CharField(max_length=200, blank=True, null=True)
-#     categoryid = models.ForeignKey(Productcat, models.DO_NOTHING, db_column='categoryid')
+#     categoryid = models.ForeignKey(, models.DO_NOTHING, db_column='categoryid')
 #     teamid = models.ForeignKey('Teams', models.DO_NOTHING, db_column='teamid')
 
 #     class Meta:

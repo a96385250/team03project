@@ -435,13 +435,13 @@ INSERT INTO `players` VALUES (5440,'藍寅倫',1,0.345,38,4,0.00,0,0,23,1,0,0,11
 UNLOCK TABLES;
 
 --
--- Table structure for table `productcat`
+-- Table structure for table `
 --
 
-DROP TABLE IF EXISTS `productcat`;
+DROP TABLE IF EXISTS `
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `productcat` (
+CREATE TABLE `
   `categoryid` int(11) NOT NULL AUTO_INCREMENT,
   `categoryname` varchar(45) NOT NULL,
   PRIMARY KEY (`categoryid`)
@@ -449,12 +449,12 @@ CREATE TABLE `productcat` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `productcat`
+-- Dumping data for table `
 --
 
-LOCK TABLES `productcat` WRITE;
-/*!40000 ALTER TABLE `productcat` DISABLE KEYS */;
-/*!40000 ALTER TABLE `productcat` ENABLE KEYS */;
+LOCK TABLES `
+/*!40000 ALTER TABLE `KEYS */;
+/*!40000 ALTER TABLE `EYS */;
 UNLOCK TABLES;
 
 --
@@ -475,7 +475,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`productid`),
   KEY `categoryid` (`categoryid`),
   KEY `teamid` (`teamid`),
-  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `productcat` (`categoryid`),
+  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryid`) REFERENCES `ryid`),
   CONSTRAINT `products_ibfk_2` FOREIGN KEY (`teamid`) REFERENCES `teams` (`teamid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

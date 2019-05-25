@@ -35,7 +35,6 @@ urlpatterns = [
     path('',include('home.urls')),
     path('signin/',include('signin.urls')),
     path('edit/',include('edit.urls')),
-    path('store/',include('store.urls')),
     path('search/',include('search.urls')),
     path('player/',include('player.urls')),
     path('api/',include(Playerrouter.urls)),

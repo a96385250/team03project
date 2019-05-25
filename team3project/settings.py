@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'home',
     "signin",
     'edit',
-    'store',
     'search',
     'player',
     'act',
@@ -89,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'yamidb',
         'USER':'root',
-        'PASSWORD':'XXXXXX',
+        'PASSWORD':'yen810327',
         'HOST':'localhost'
     }
 }
