@@ -31,13 +31,14 @@ def game(request):
         gamefive=gamesfive.find_all("span")
         team1=re.search(r'(?P<data>\w.+)',gamefive[0].get_text())
         date=re.search(r'(?P<data>\w.+)',gamefive[1].get_text())
-        gamefinal=re.search(r'(?P<data1>\d)\s-\s(?P<data2>\d)',gamefive[2].get_text())
+        gamefinal=re.search(r'(?P<data1>\d+)\s-\s(?P<data2>\d+)',gamefive[2].get_text())
         team2=re.search(r'(?P<data>\w.+)',gamefive[4].get_text())
 
         gamefinal1=gamefinal.group("data1")
         gamefinal2=gamefinal.group("data2")
-     
-        if gamefinal1 < gamefinal2:
+        print(type(gamefinal1))
+        print(type(gamefinal2))
+        if int(gamefinal1) < int(gamefinal2):
             teamwin=team2.group("data")
             if teamwin == "統一":
                 teamwinname="/static/images/111.png"
@@ -47,7 +48,8 @@ def game(request):
                 teamwinname="/static/images/333.png"
             elif teamwin == "兄弟":
                 teamwinname="/static/images/444.png"
-        else:
+        if gamefinal1 > gamefinal2:
+            print("OK")
             teamwin=team1.group("data")
             if teamwin == "統一":
                 teamwinname="/static/images/111.png"
