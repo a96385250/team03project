@@ -36,9 +36,11 @@ def game(request):
 
         gamefinal1=gamefinal.group("data1")
         gamefinal2=gamefinal.group("data2")
+        A1 = int(gamefinal1)
+        A2 = int(gamefinal2)
         print(type(gamefinal1))
         print(type(gamefinal2))
-        if int(gamefinal1) < int(gamefinal2):
+        if A1 < A2:
             teamwin=team2.group("data")
             if teamwin == "統一":
                 teamwinname="/static/images/111.png"
@@ -48,8 +50,7 @@ def game(request):
                 teamwinname="/static/images/333.png"
             elif teamwin == "兄弟":
                 teamwinname="/static/images/444.png"
-        if gamefinal1 > gamefinal2:
-            print("OK")
+        if A1 > A2:
             teamwin=team1.group("data")
             if teamwin == "統一":
                 teamwinname="/static/images/111.png"
